@@ -16,8 +16,7 @@ To get started with pyttsx3, you can install the package using pip, the python p
    ```sh
    pip install pyttsx3
    ```
-
-
+This is a project startup and looking up to other developers to come on board for a grreat build up
 
 ### Created by JeffMint
 
