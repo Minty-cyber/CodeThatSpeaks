@@ -18,7 +18,7 @@ To get started with pyttsx3, you can install the package using pip, the python p
    ```
 
 # Open Source 
-This is a project startup and looking up to other developers to come on board for a grreat build up
+This is a project startup and looking up to other developers to come on board for a great build up
 
 ### Created by JeffMint
 
