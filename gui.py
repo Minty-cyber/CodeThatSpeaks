@@ -1,97 +1,92 @@
-import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit
-from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal
-from PySide6.QtGui import QCursor 
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget
+from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
+from PySide6.QtGui import QCursor
 from functools import partial
-from voice import *
 
 class ModernPage(QWidget):
+    back_to_main = Signal()  
+
     def __init__(self):
         super().__init__()
-        self.setLayout(QVBoxLayout()) 
-        self.layout().setAlignment(Qt.AlignmentFlag.AlignCenter) 
-        self.layout().setContentsMargins(0, -200, 0, 0)
-
-        self.title_label = QLabel("Text Translation", self)
-        self.title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
-        self.layout().addWidget(self.title_label)
-
-        self.username_input = QLineEdit(self)
-        self.username_input.setPlaceholderText("User Input")
-        self.username_input.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
-        self.username_input.setFixedSize(300, 40)  
-        self.layout().addWidget(self.username_input)
-
-        self.password_input = QLineEdit(self)
-        self.password_input.setPlaceholderText("Target Language")
-        self.password_input.setFixedSize(300, 40) 
-        self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
-        self.layout().addWidget(self.password_input)
-
-        self.translate_button = QPushButton("Translate", self)
-        self.login_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        self.login_button.setFixedSize(100, 50) 
-        self.layout().addWidget(self.login_button)
-
+        layout = QVBoxLayout(self)
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        self.username_input.installEventFilter(self)
-        self.password_input.installEventFilter(self)
+        title_label = QLabel("Text Translation", self)
+        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        layout.addWidget(title_label)
 
-    
-    def eventFilter(self, obj, event):
-        if event.type() == QEvent.FocusIn:
-            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px;")
-        elif event.type() == QEvent.FocusOut:
-            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
-        return super().eventFilter(obj, event)
+        self.user_input = QLineEdit(self)
+        self.user_input.setPlaceholderText("User Input")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
+        self.user_input.setFixedSize(300, 40)
+        layout.addWidget(self.user_input)
 
+        self.target_language_input = QLineEdit(self)
+        self.target_language_input.setPlaceholderText("Target Language")
+        self.target_language_input.setFixedSize(300, 40)
+        layout.addWidget(self.target_language_input)
+
+        translate_button = QPushButton("Translate", self)
+        translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        translate_button.setFixedSize(100, 50)
+        layout.addWidget(translate_button)
+
+        back_button = QPushButton("Back", self)
+        back_button.setStyleSheet("background-color: #FF5733; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        back_button.setFixedSize(100, 50)
+        back_button.clicked.connect(self.go_to_main_window)
+        layout.addWidget(back_button)
+
+    def go_to_main_window(self):
+        self.back_to_main.emit()
 
 class MainWindow(QMainWindow):
-    window_opened = Signal()  
-
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Modern Button Cluster")
-        self.setFixedSize(800, 600)  
-        self.setWindowFlag(Qt.WindowType.WindowMaximizeButtonHint, True)
-        
         self.setStyleSheet("background-color: #333;")
 
-        self.central_widget = QWidget()
+        self.central_widget = QStackedWidget()
         self.setCentralWidget(self.central_widget)
 
-        layout = QGridLayout(self.central_widget)
+        self.setup_main_window()
+        self.setup_modern_page()
+
+    def setup_main_window(self):
+        main_window_widget = QWidget()
+        layout = QGridLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        button_texts = ["Text-Translation", "Button 1", "Button 2", 
-                        "Button 3", "Button 4", "Button 5", 
-                        "Extract Patterns", "2", '3']
-        row = 0
-        col = 0
-        for text in button_texts:
+        button_texts = ["Text-Translation", "Button 1", "Button 2", "Button 3", "Button 4", "Button 5",
+                        "Extract Patterns", "2", '3', '4', '5', '6', "8", '9', '10']
+        rows = 4
+        cols = 6
+        for i, text in enumerate(button_texts):
             button = QPushButton(text, self)
-            button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+            button.setStyleSheet(
+                "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
             button.setFixedSize(button.sizeHint())
-            button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))  
-            button.clicked.connect(partial(self.showModernPage, text))
+            button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+            button.clicked.connect(self.show_modern_page)
+            row = i // cols
+            col = i % cols
             layout.addWidget(button, row, col)
-            col += 1
-            if col == 6:
-                col = 0
-                row += 1
-        
-        self.window_opened.connect(speak_with_window_open)    
 
-        QTimer.singleShot(1000, self.window_opened.emit)  
-    
-    
-    
-    def showModernPage(self, text):
-        self.modern_page = ModernPage()
-        self.setCentralWidget(self.modern_page)
+        self.central_widget.addWidget(main_window_widget)
+
+    def setup_modern_page(self):
+        modern_page = ModernPage()
+        modern_page.back_to_main.connect(self.show_main_window)
+        self.central_widget.addWidget(modern_page)
+
+    def show_modern_page(self):
+        self.central_widget.setCurrentIndex(1)
+
+    def show_main_window(self):
+        self.central_widget.setCurrentIndex(0)
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QApplication([])
     window = MainWindow()
     window.show()
-    sys.exit(app.exec())
+    app.exec()
