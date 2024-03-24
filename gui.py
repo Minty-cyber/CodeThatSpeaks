@@ -56,6 +56,8 @@ class MainWindow(QMainWindow):
         main_window_widget = QWidget()
         layout = QGridLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        
 
         button_texts = ["Text-Translation", "Button 1", "Button 2", "Button 3", "Button 4", "Button 5",
                         "Extract Patterns", "2", '3', '4', '5', '6', "8", '9', '10']
