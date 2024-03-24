@@ -8,5 +8,5 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)  
 
 def speak_with_window_open():
-    engine.say("Welcome")
+    engine.say("Welcome to a demo page of the BasicLingua app!")
     engine.runAndWait()
