@@ -17,7 +17,7 @@ class ModernPage(QWidget):
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
         back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
-        back_button.setFixedSize(50, 50)
+        back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
@@ -47,6 +47,7 @@ class ModernPage(QWidget):
         self.target_language_input.setPlaceholderText("Target Language")
         self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.target_language_input.setFixedSize(300, 40)
+        self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         input_layout.addWidget(self.target_language_input)
 
         layout.addLayout(input_layout)
