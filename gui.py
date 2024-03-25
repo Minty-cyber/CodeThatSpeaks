@@ -43,7 +43,7 @@ class ModernPage(QWidget):
 
         translate_button = QPushButton("Translate", self)
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        translate_button.setFixedSize(100, 30)
+        translate_button.setFixedSize(100, 50)
         input_layout.addWidget(translate_button)
         
         
