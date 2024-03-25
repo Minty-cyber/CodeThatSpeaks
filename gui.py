@@ -75,8 +75,8 @@ class ModernPage(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Modern Button Cluster ")
-        self.setStyleSheet("background-color: #333; ")
+        self.setWindowTitle("Modern Button Cluster")
+        self.setStyleSheet("background-color: #333;")
 
         self.central_widget = QStackedWidget()
         self.setCentralWidget(self.central_widget)
