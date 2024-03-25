@@ -22,25 +22,29 @@ class ModernPage(QWidget):
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
         layout.addWidget(title_label)
 
+        input_layout = QVBoxLayout()
+        input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
         self.user_input = QLineEdit(self)
         self.user_input.setPlaceholderText("User Input")
-        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.user_input.setFixedSize(300, 40)
-        layout.addWidget(self.user_input, Qt.AlignmentFlag.AlignCenter)
+        input_layout.addWidget(self.user_input)
 
         self.target_language_input = QLineEdit(self)
         self.target_language_input.setPlaceholderText("Target Language")
-        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.target_language_input.setFixedSize(300, 40)
-        layout.addWidget(self.target_language_input)
+        input_layout.addWidget(self.target_language_input)
+
+        layout.addLayout(input_layout)
 
         translate_button = QPushButton("Translate", self)
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         translate_button.setFixedSize(100, 50)
         layout.addWidget(translate_button)
-
         
-
+        
     def go_to_main_window(self):
         self.back_to_main.emit()
 
