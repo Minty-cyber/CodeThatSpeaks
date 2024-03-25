@@ -15,9 +15,9 @@ class ModernPage(QWidget):
         main_title_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         main_title_layout.addSpacing()
         
-        title_label = QLabel("BasicLingua", self)
-        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
-        input_layout.addWidget(title_label)
+        main_title_label = QLabel("BasicLingua", self)
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        input_layout.addWidget(main_title_label)
         
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
