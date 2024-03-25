@@ -11,7 +11,7 @@ class ModernPage(QWidget):
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
-        _layout = QVBoxLayout()
+        main_title_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         input_layout.addSpacing()
         
