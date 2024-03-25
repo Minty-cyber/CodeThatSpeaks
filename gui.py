@@ -18,12 +18,14 @@ class ModernPage(QWidget):
         back_button.clicked.connect(self.go_to_main_window)
         layout.addWidget(back_button, 0, Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         
-        title_label = QLabel("Text Translation", self)
-        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
-        layout.addWidget(title_label)
-
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        input_layout.addSpacing(50)
+        
+        title_label = QLabel("Text Translation", self)
+        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        input_layout.addWidget(title_label)
+
         
         self.user_input = QLineEdit(self)
         self.user_input.setPlaceholderText("User Input")
@@ -42,7 +44,7 @@ class ModernPage(QWidget):
         translate_button = QPushButton("Translate", self)
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         translate_button.setFixedSize(100, 50)
-        layout.addWidget(translate_button)
+        input_layout.addWidget(translate_button)
         
         
     def go_to_main_window(self):
