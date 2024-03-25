@@ -13,11 +13,9 @@ class ModernPage(QWidget):
         
         main_title_layout = QVBoxLayout()
         main_title_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        main_title_layout.addSpacing()
+        main_title_layout.addSpacing(0)
         
-        main_title_label = QLabel("BasicLingua", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
-        input_layout.addWidget(main_title_label)
+        
         
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
@@ -25,6 +23,10 @@ class ModernPage(QWidget):
         back_button.setFixedSize(50, 50)
         back_button.clicked.connect(self.go_to_main_window)
         layout.addWidget(back_button, 0, Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
+        
+        main_title_label = QLabel("BasicLingua", self)
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        main_title_layout.addWidget(main_title_label)
         
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
