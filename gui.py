@@ -48,11 +48,19 @@ class ModernPage(QWidget):
         input_layout.addWidget(self.target_language_input)
 
         layout.addLayout(input_layout)
+        
+        button_layout = QHBoxLayout()
+        input_layout.addLayout(button_layout)
 
         translate_button = QPushButton("Translate", self)
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         translate_button.setFixedSize(100, 50)
-        input_layout.addWidget(translate_button)
+        button_layout.addWidget(translate_button)
+        
+        refresh_button = QPushButton("Refresh", self)
+        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        refresh_button.setFixedSize(100, 50)
+        button_layout.addWidget(translate_button)
         
         
     def go_to_main_window(self):
