@@ -11,22 +11,20 @@ class ModernPage(QWidget):
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
-        main_title_layout = QVBoxLayout()
-        main_title_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        main_title_layout.addSpacing(0)
-        
-        
+        top_row_layout = QHBoxLayout()
+        layout.addLayout(top_row_layout)
         
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
         back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
         back_button.setFixedSize(50, 50)
         back_button.clicked.connect(self.go_to_main_window)
-        layout.addWidget(back_button, 0, Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
+        top_row_layout.addWidget(back_button)
         
         main_title_label = QLabel("BasicLingua", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
-        main_title_layout.addWidget(main_title_label)
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
+        main_title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        top_row_layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
         
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
