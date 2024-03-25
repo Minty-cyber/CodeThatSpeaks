@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget
 from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
-from PySide6.QtGui import QCursor
+from PySide6.QtGui import QCursor,  QIcon
 from functools import partial
 
 class ModernPage(QWidget):
@@ -9,7 +9,14 @@ class ModernPage(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        
+        back_button = QPushButton(self)
+        back_button.setIcon(QIcon("back-button.png")) 
+        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
+        back_button.setFixedSize(50, 50)
+        back_button.clicked.connect(self.go_to_main_window)
+        layout.addWidget(back_button, 0, Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
@@ -17,12 +24,13 @@ class ModernPage(QWidget):
 
         self.user_input = QLineEdit(self)
         self.user_input.setPlaceholderText("User Input")
-        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
         self.user_input.setFixedSize(300, 40)
-        layout.addWidget(self.user_input)
+        layout.addWidget(self.user_input, Qt.AlignmentFlag.AlignCenter)
 
         self.target_language_input = QLineEdit(self)
         self.target_language_input.setPlaceholderText("Target Language")
+        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
         self.target_language_input.setFixedSize(300, 40)
         layout.addWidget(self.target_language_input)
 
@@ -31,11 +39,7 @@ class ModernPage(QWidget):
         translate_button.setFixedSize(100, 50)
         layout.addWidget(translate_button)
 
-        back_button = QPushButton("Back", self)
-        back_button.setStyleSheet("background-color: #FF5733; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        back_button.setFixedSize(100, 50)
-        back_button.clicked.connect(self.go_to_main_window)
-        layout.addWidget(back_button)
+        
 
     def go_to_main_window(self):
         self.back_to_main.emit()
