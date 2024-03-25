@@ -91,8 +91,7 @@ class MainWindow(QMainWindow):
         
         
 
-        button_texts = ["Text Translation", "Text Correction", "Extract Patterns",
-    "2", '3']
+        button_texts = ["Text Translation", "Text Correction", "Extract Patterns", "2", '3']
         rows = 4
         cols = 6
         for i, text in enumerate(button_texts):
