@@ -11,6 +11,10 @@ class ModernPage(QWidget):
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
+        _layout = QVBoxLayout()
+        input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        input_layout.addSpacing()
+        
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
         back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
