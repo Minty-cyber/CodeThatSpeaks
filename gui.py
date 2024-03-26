@@ -118,19 +118,40 @@ class MainWindow(QMainWindow):
         grid_layout = QGridLayout()
         layout.addLayout(grid_layout)
 
-        button_texts = ["Text Translation", "Text Correction", "Extract Patterns", "2", '3']
-        rows = 4
-        cols = 6
-        for i, text in enumerate(button_texts):
-            button = QPushButton(text, self)
-            button.setStyleSheet(
-                "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
-            button.setFixedSize(button.sizeHint())
-            button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-            button.clicked.connect(self.show_modern_page)
-            row = i // cols
-            col = i % cols
-            grid_layout.addWidget(button, row, col, alignment=Qt.AlignmentFlag.AlignCenter)
+        button_1 = QPushButton("Text Translation", self)
+        button_1.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        button_1.clicked.connect(self.show_modern_page)
+        grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        button_2 = QPushButton("Text Correction", self)
+        button_2.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        button_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        button_2.clicked.connect(self.show_modern_page)
+        grid_layout.addWidget(button_2, 0, 1, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        button_3 = QPushButton("Extract Patterns", self)
+        button_3.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        button_3.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        button_3.clicked.connect(self.show_modern_page)
+        grid_layout.addWidget(button_3, 0, 2, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        button_4 = QPushButton("Button 4", self)
+        button_4.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        button_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        button_4.clicked.connect(self.show_modern_page)
+        grid_layout.addWidget(button_4, 1, 0, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        button_5 = QPushButton("Button 5", self)
+        button_5.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        button_5.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        button_5.clicked.connect(self.show_modern_page)
+        grid_layout.addWidget(button_5, 1, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
         self.central_widget.addWidget(main_window_widget)
 
