@@ -16,7 +16,7 @@ class ModernPage(QWidget):
         
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png")) 
-        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
+        back_button.setStyleSheet("border: none; color: whitesmoke;")  
         back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.setStyleSheet("""
