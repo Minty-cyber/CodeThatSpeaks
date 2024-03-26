@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
 
         # Add title label
         main_title_label = QLabel("BasicLingua", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke; margin-down: 40px;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         # Create grid layout for buttons
