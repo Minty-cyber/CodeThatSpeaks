@@ -68,6 +68,13 @@ class ModernPage(QWidget):
         
     def go_to_main_window(self):
         self.back_to_main.emit()
+        
+    def eventFilter(self, obj, event):
+        if event.type() == Qt.QEvent.FocusIn:
+            obj.setStyleSheet("border: 2px solid red; border-radius: 5px;")
+        elif event.type() == Qt.QEvent.FocusOut:
+            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
+        return super().eventFilter(obj, event)
 
 class MainWindow(QMainWindow):
     def __init__(self):
