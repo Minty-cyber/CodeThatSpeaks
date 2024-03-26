@@ -22,8 +22,6 @@ class ModernPage(QWidget):
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
         
-        
-        
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         input_layout.addSpacing(50)
