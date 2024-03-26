@@ -22,10 +22,7 @@ class ModernPage(QWidget):
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
         
-        main_title_label = QLabel("BasicLingua", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
-        main_title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        top_row_layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
+        
         
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -80,7 +77,8 @@ class MainWindow(QMainWindow):
 
         self.central_widget = QStackedWidget()
         self.setCentralWidget(self.central_widget)
-
+        
+        
         self.setup_main_window()
         self.setup_modern_page()
 
