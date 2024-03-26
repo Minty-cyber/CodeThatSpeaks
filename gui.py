@@ -144,7 +144,7 @@ class MainWindow(QMainWindow):
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         button_4.clicked.connect(self.show_modern_page)
-        grid_layout.addWidget(button_4, 1, 0, alignment=Qt.AlignmentFlag.AlignCenter)
+        grid_layout.addWidget(button_4, 0, 3, alignment=Qt.AlignmentFlag.AlignCenter)
 
         button_5 = QPushButton("Button 5", self)
         button_5.setStyleSheet(
