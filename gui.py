@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
 
         # Add title label
         main_title_label = QLabel("BasicLingua", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke; margin-down: 40px;")
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         layout.addSpacing(10)
