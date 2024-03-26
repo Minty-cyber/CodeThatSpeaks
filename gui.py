@@ -84,19 +84,17 @@ class MainWindow(QMainWindow):
 
     def setup_main_window(self):
         main_window_widget = QWidget()
-        layout = QGridLayout(main_window_widget)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        
-        layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        top_row_layout = QHBoxLayout()
-        layout.addLayout(top_row_layout)
-        
+        layout = QVBoxLayout(main_window_widget)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+
+        # Add title label
         main_title_label = QLabel("BasicLingua", self)
         main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
-        main_title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        top_row_layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
+        # Create grid layout for buttons
+        grid_layout = QGridLayout()
+        layout.addLayout(grid_layout)
 
         button_texts = ["Text Translation", "Text Correction", "Extract Patterns", "2", '3']
         rows = 4
@@ -110,9 +108,10 @@ class MainWindow(QMainWindow):
             button.clicked.connect(self.show_modern_page)
             row = i // cols
             col = i % cols
-            layout.addWidget(button, row, col)
+            grid_layout.addWidget(button, row, col, alignment=Qt.AlignmentFlag.AlignCenter)
 
         self.central_widget.addWidget(main_window_widget)
+
 
     def setup_modern_page(self):
         modern_page = ModernPage()
