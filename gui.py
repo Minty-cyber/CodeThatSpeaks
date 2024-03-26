@@ -87,7 +87,16 @@ class MainWindow(QMainWindow):
         layout = QGridLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
+        layout = QVBoxLayout(self)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        top_row_layout = QHBoxLayout()
+        layout.addLayout(top_row_layout)
         
+        main_title_label = QLabel("BasicLingua", self)
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
+        main_title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        top_row_layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
+
 
         button_texts = ["Text Translation", "Text Correction", "Extract Patterns", "2", '3']
         rows = 4
