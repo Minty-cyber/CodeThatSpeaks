@@ -20,17 +20,8 @@ class ModernPage(QWidget):
         back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.setStyleSheet("""
-            QPushButton {
-                background-color: #4CAF50;
-                color: white;
-                font-size: 20px;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-            }
-
             QPushButton:hover {
-                background-color: #45a049; /* Change color on hover */
+                background-color: #45a049; 
             }
         """)
         back_button.clicked.connect(self.go_to_main_window)
