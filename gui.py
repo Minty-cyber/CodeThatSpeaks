@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         button_1.clicked.connect(self.show_modern_page)
-        grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
+        grid_layout.addWidget(button_1, 0, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
 
         button_2 = QPushButton("Text Correction", self)
         button_2.setStyleSheet(
