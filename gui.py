@@ -139,7 +139,7 @@ class MainWindow(QMainWindow):
         button_3.clicked.connect(self.show_modern_page)
         grid_layout.addWidget(button_3, 0, 2, alignment=Qt.AlignmentFlag.AlignCenter)
 
-        button_4 = QPushButton("Button 4", self)
+        button_4 = QPushButton("Detect NER", self)
         button_4.setStyleSheet(
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
