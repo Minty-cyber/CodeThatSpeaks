@@ -240,11 +240,11 @@ class TextReplacePage(QWidget):
         button_layout = QHBoxLayout()
         input_layout.addLayout(button_layout)
 
-        extract_button = QPushButton("Extract", self)
-        extract_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        extract_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        extract_button.setFixedSize(100, 50)
-        button_layout.addWidget(extract_button)
+        process_button = QPushButton("Process", self)
+        process_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        process_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        process_button.setFixedSize(100, 50)
+        button_layout.addWidget(process_button)
         
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
