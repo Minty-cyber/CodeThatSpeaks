@@ -211,6 +211,52 @@ class TextReplacePage(QWidget):
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
         
+        input_layout = QVBoxLayout()
+        input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        input_layout.addSpacing(50)
+        
+        title_label = QLabel("Text Replace", self)
+        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        input_layout.addWidget(title_label)
+
+        self.user_input = QLineEdit(self)
+        self.user_input.setPlaceholderText("Enter text to extract patterns")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.user_input.setFixedSize(300, 40)
+        self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.user_input.installEventFilter(self)
+        input_layout.addWidget(self.user_input)
+
+
+        self.patterns_input = QLineEdit(self)
+        self.patterns_input.setPlaceholderText("email, number, name...")
+        self.patterns_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.patterns_input.setFixedSize(300, 40)
+        self.patterns_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.patterns_input.installEventFilter(self)
+        input_layout.addWidget(self.patterns_input)
+
+        layout.addLayout(input_layout)
+        
+        button_layout = QHBoxLayout()
+        input_layout.addLayout(button_layout)
+
+        extract_button = QPushButton("Extract", self)
+        extract_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        extract_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        extract_button.setFixedSize(100, 50)
+        button_layout.addWidget(extract_button)
+        
+        refresh_button = QPushButton("Refresh", self)
+        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        refresh_button.setFixedSize(100, 50)
+        button_layout.addWidget(refresh_button)
+        
+        
+    def go_to_main_window(self):
+        self.back_to_main.emit()
+        
         
      
         
