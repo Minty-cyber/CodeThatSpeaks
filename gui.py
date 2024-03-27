@@ -92,8 +92,8 @@ class TextTranslationPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
             return super().eventFilter(obj, event)
         
-# class ExtractPatternPage(QWidget):
-#     pass
+class ExtractPatternPage(QWidget):
+    back_to_main = Signal() 
         
     
 
