@@ -94,7 +94,7 @@ class TextTranslationPage(QWidget):
 class ExtractPatternPage(QWidget):
     back_to_main = Signal() 
     
-     def __init__(self):
+    def __init__(self):
         super().__init__()
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
@@ -169,6 +169,8 @@ class ExtractPatternPage(QWidget):
         
     def go_to_main_window(self):
         self.back_to_main.emit()
+        
+    
 
     
         
@@ -191,6 +193,10 @@ class MainWindow(QMainWindow):
         main_window_widget = QWidget()
         layout = QVBoxLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        
+        extract_pattern_page = ExtractPatternPage()
+        extract_pattern_page.back_to_main.connect(self.show_main_window)
+        self.central_widget.addWidget(extract_pattern_page)
 
        
         main_title_label = QLabel("BasicLingua", self)
