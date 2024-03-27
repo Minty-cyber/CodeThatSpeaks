@@ -94,6 +94,79 @@ class TextTranslationPage(QWidget):
         
 class ExtractPatternPage(QWidget):
     back_to_main = Signal() 
+    
+     def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        
+        top_row_layout = QHBoxLayout()
+        layout.addLayout(top_row_layout)
+        
+        back_button = QPushButton(self)
+        back_button.setIcon(QIcon("back-button.png")) 
+        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
+        back_button.setFixedSize(70, 70)
+        back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        back_button.setStyleSheet("""
+            QPushButton {
+                background-color: none;
+                color: white;
+                font-size: 20px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            QPushButton:hover {
+                background-color: #45a049; /* Change color on hover */
+            }
+        """)
+        back_button.clicked.connect(self.go_to_main_window)
+        top_row_layout.addWidget(back_button)
+        
+        input_layout = QVBoxLayout()
+        input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        input_layout.addSpacing(50)
+        
+        title_label = QLabel("Extract Pattern", self)
+        title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
+        input_layout.addWidget(title_label)
+
+        self.user_input = QLineEdit(self)
+        self.user_input.setPlaceholderText("Enter Text to extract patterns")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.user_input.setFixedSize(300, 40)
+        self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.user_input.installEventFilter(self)
+        input_layout.addWidget(self.user_input)
+
+
+        self.target_language_input = QLineEdit(self)
+        self.target_language_input.setPlaceholderText("Target Language")
+        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.target_language_input.setFixedSize(300, 40)
+        self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.target_language_input.installEventFilter(self)
+        input_layout.addWidget(self.target_language_input)
+
+        layout.addLayout(input_layout)
+        
+        button_layout = QHBoxLayout()
+        input_layout.addLayout(button_layout)
+
+        translate_button = QPushButton("Translate", self)
+        translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        translate_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        translate_button.setFixedSize(100, 50)
+        button_layout.addWidget(translate_button)
+        
+        refresh_button = QPushButton("Refresh", self)
+        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        refresh_button.setFixedSize(100, 50)
+        button_layout.addWidget(refresh_button)
+    
         
     
 
