@@ -5,7 +5,7 @@ from functools import partial
 
     
     
-class ModernPage(QWidget):
+class TextTranslationPage(QWidget):
     back_to_main = Signal()  
 
     def __init__(self):
@@ -92,8 +92,8 @@ class ModernPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
             return super().eventFilter(obj, event)
         
-class ExtractPatternPage(Qwidget):
-    
+# class ExtractPatternPage(QWidget):
+#     pass
         
     
 
@@ -163,8 +163,8 @@ class MainWindow(QMainWindow):
         self.central_widget.addWidget(main_window_widget)
 
 
-    def setup_modern_page(self):
-        modern_page = ModernPage()
+    def setup_text_translation_page(self):
+        modern_page = TextTranslationPage()
         modern_page.back_to_main.connect(self.show_main_window)
         self.central_widget.addWidget(modern_page)
 
