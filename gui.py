@@ -194,11 +194,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
         
-        extract_pattern_page = ExtractPatternPage()
-        extract_pattern_page.back_to_main.connect(self.show_main_window)
-        self.central_widget.addWidget(extract_pattern_page)
-
-       
+        
         main_title_label = QLabel("BasicLingua", self)
         main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -250,24 +246,16 @@ class MainWindow(QMainWindow):
         modern_page = TextTranslationPage()
         modern_page.back_to_main.connect(self.show_main_window)
         self.central_widget.addWidget(modern_page)
+        
+    def setup_extract_pattern_page(self): 
+        extract_pattern_page = ExtractPatternPage()
+        extract_pattern_page.back_to_main.connect(self.show_main_window)
+        self.central_widget.addWidget(extract_pattern_page)
 
-    def show_modern_page(self):
+    def show_text_translation_page(self):
         self.central_widget.setCurrentIndex(1)
         
-    def show_home_page(self):
     
-        layout = self.central_widget.layout()
-        for i in reversed(range(layout.count())):
-            widget = layout.itemAt(i).widget()
-            if widget:
-                widget.setParent(None)
-
-        # Add a label to show that we are on the home page
-        home_label = QLabel("Welcome to the Home Page!", self)
-        home_label.setStyleSheet("font-size: 24px; color: white;")
-        layout.addWidget(home_label)
-        layout.setAlignment(home_label, Qt.AlignmentFlag.AlignCenter)
-        
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
 
