@@ -234,7 +234,7 @@ class TextReplacePage(QWidget):
         self.replacement_input.setFixedSize(300, 40)
         self.replacement_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.replacement_input.installEventFilter(self)
-        input_layout.addWidget(self.patterns_input)
+        input_layout.addWidget(self.replacement_input)
 
         layout.addLayout(input_layout)
         
