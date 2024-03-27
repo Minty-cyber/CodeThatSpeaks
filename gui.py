@@ -189,6 +189,28 @@ class TextReplacePage(QWidget):
         top_row_layout = QHBoxLayout()
         layout.addLayout(top_row_layout)
         
+        back_button = QPushButton(self)
+        back_button.setIcon(QIcon("back-button.png")) 
+        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
+        back_button.setFixedSize(70, 70)
+        back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        back_button.setStyleSheet("""
+            QPushButton {
+                background-color: none;
+                color: white;
+                font-size: 20px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            QPushButton:hover {
+                background-color: #45a049; /* Change color on hover */
+            }
+        """)
+        back_button.clicked.connect(self.go_to_main_window)
+        top_row_layout.addWidget(back_button)
+        
         
      
         
