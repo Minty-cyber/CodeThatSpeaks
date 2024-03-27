@@ -179,7 +179,9 @@ class ExtractPatternPage(QWidget):
         
         
 class TextReplacePage(QWidget):
-          
+    back_to_main = Signal() 
+    
+     
         
         
         
