@@ -243,9 +243,9 @@ class MainWindow(QMainWindow):
 
 
     def setup_text_translation_page(self):
-        modern_page = TextTranslationPage()
-        modern_page.back_to_main.connect(self.show_main_window)
-        self.central_widget.addWidget(modern_page)
+        text_translation_page = TextTranslationPage()
+        text_translation_page.back_to_main.connect(self.show_main_window)
+        self.central_widget.addWidget(text_translation_page)
         
     def setup_extract_pattern_page(self): 
         extract_pattern_page = ExtractPatternPage()
