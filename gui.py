@@ -177,6 +177,19 @@ class ExtractPatternPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
         
+        
+class TextReplacePage(QWidget):
+          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
