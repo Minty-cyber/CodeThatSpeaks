@@ -229,13 +229,12 @@ class TextReplacePage(QWidget):
 
 
         self.replacement_input = QLineEdit(self)
-        self.replacement_input.setPlaceholderText("email, number, name...")
+        self.replacement_input.setPlaceholderText("Type detiales prompts specifying replacement rules")
         self.replacement_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.replacement_input.setFixedSize(300, 40)
         self.replacement_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.replacement_input.installEventFilter(self)
         input_layout.addWidget(self.replacement_input)
-
         layout.addLayout(input_layout)
         
         button_layout = QHBoxLayout()
