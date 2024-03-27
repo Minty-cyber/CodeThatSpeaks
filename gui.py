@@ -170,12 +170,6 @@ class ExtractPatternPage(QWidget):
     def go_to_main_window(self):
         self.back_to_main.emit()
         
-    
-
-    
-        
-    
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
