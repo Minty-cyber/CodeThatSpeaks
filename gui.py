@@ -122,7 +122,7 @@ class MainWindow(QMainWindow):
         button_1.setStyleSheet(
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        button_1.clicked.connect(self.show_modern_page)
+        button_1.clicked.connect(self.ModernPage)
         grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
 
         button_2 = QPushButton("Text Correction", self)
@@ -161,11 +161,11 @@ class MainWindow(QMainWindow):
         modern_page.back_to_main.connect(self.show_main_window)
         self.central_widget.addWidget(modern_page)
 
-    def show_modern_page(self):
-        self.central_widget.setCurrentIndex(1)
+    # def show_modern_page(self):
+    #     self.central_widget.setCurrentIndex(1)
 
-    def show_main_window(self):
-        self.central_widget.setCurrentIndex(0)
+    # def show_main_window(self):
+    #     self.central_widget.setCurrentIndex(0)
 
 if __name__ == "__main__":
     app = QApplication([])
