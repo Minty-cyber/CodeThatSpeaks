@@ -3,10 +3,9 @@ from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
 from PySide6.QtGui import QCursor,  QIcon
 from functools import partial
 
-class EventFilterMixin:
     
     
-class ModernPage(QWidget, EventFilterMixin):
+class ModernPage(QWidget):
     back_to_main = Signal()  
 
     def __init__(self):
