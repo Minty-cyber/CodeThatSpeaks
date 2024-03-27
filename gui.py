@@ -143,12 +143,12 @@ class ExtractPatternPage(QWidget):
 
 
         self.patterns_input = QLineEdit(self)
-        self.target_language_input.setPlaceholderText("Target Language")
-        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
-        self.target_language_input.setFixedSize(300, 40)
-        self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.target_language_input.installEventFilter(self)
-        input_layout.addWidget(self.target_language_input)
+        self.patterns_input.setPlaceholderText("Target Language")
+        self.patterns_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.patterns_input.setFixedSize(300, 40)
+        self.patterns_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.patterns_input.installEventFilter(self)
+        input_layout.addWidget(self.patterns_input)
 
         layout.addLayout(input_layout)
         
