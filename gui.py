@@ -188,6 +188,7 @@ class MainWindow(QMainWindow):
         
         self.setup_main_window()
         self.setup_text_translation_page()
+        self.setup_extract_pattern_page() 
 
     def setup_main_window(self):
         main_window_widget = QWidget()
