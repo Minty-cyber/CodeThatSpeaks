@@ -81,7 +81,6 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(refresh_button)
         
         
-        
     def go_to_main_window(self):
         self.back_to_main.emit()
         
@@ -166,6 +165,11 @@ class ExtractPatternPage(QWidget):
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         refresh_button.setFixedSize(100, 50)
         button_layout.addWidget(refresh_button)
+        
+        
+    def go_to_main_window(self):
+        self.back_to_main.emit()
+
     
         
     
