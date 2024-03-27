@@ -181,6 +181,12 @@ class ExtractPatternPage(QWidget):
 class TextReplacePage(QWidget):
     back_to_main = Signal() 
     
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        
+        
      
         
         
