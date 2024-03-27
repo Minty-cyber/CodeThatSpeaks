@@ -129,7 +129,7 @@ class MainWindow(QMainWindow):
         button_2.setStyleSheet(
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        button_2.clicked.connect(self.show_modern_page)
+        button_2.clicked.connect(self.show_home_page)
         grid_layout.addWidget(button_2, 0, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
         button_3 = QPushButton("Extract Patterns", self)
@@ -164,9 +164,17 @@ class MainWindow(QMainWindow):
     def show_modern_page(self):
         self.central_widget.setCurrentIndex(1)
     def show_home_page(self):
+        layout = self.central_widget.layout()
+        for i in reversed(range(layout.count())):
+            widget = layout.itemAt(i).widget()
+            if widget:
+                widget.setParent(None)
+
+        # Add a label to show that we are on the home page
         home_label = QLabel("Welcome to the Home Page!", self)
         home_label.setStyleSheet("font-size: 24px; color: white;")
         layout.addWidget(home_label, alignment=Qt.AlignmentFlag.AlignCenter)
+    
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
 
