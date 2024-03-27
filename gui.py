@@ -108,7 +108,7 @@ class MainWindow(QMainWindow):
         
         
         self.setup_main_window()
-        self.setup_modern_page()
+        self.setup_text_translation_page()
 
     def setup_main_window(self):
         main_window_widget = QWidget()
