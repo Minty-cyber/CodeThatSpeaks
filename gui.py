@@ -166,18 +166,18 @@ class MainWindow(QMainWindow):
         
     def show_home_page(self):
     # Clear existing widgets in the layout
-    layout = self.central_widget.layout()
-    for i in reversed(range(layout.count())):
-        widget = layout.itemAt(i).widget()
-        if widget:
-            widget.setParent(None)
+        layout = self.central_widget.layout()
+        for i in reversed(range(layout.count())):
+            widget = layout.itemAt(i).widget()
+            if widget:
+                widget.setParent(None)
 
-    # Add a label to show that we are on the home page
-    home_label = QLabel("Welcome to the Home Page!", self)
-    home_label.setStyleSheet("font-size: 24px; color: white;")
-    layout.addWidget(home_label)
-    layout.setAlignment(home_label, Qt.AlignmentFlag.AlignCenter)
-    
+        # Add a label to show that we are on the home page
+        home_label = QLabel("Welcome to the Home Page!", self)
+        home_label.setStyleSheet("font-size: 24px; color: white;")
+        layout.addWidget(home_label)
+        layout.setAlignment(home_label, Qt.AlignmentFlag.AlignCenter)
+        
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
 
