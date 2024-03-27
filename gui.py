@@ -3,7 +3,7 @@ from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
 from PySide6.QtGui import QCursor,  QIcon
 from functools import partial
 
-class EventFilterMinxin:
+class EventFilterMixin:
     def eventFilter(self, obj, event):
             if event.type() == QEvent.FocusIn:
                 obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px;")
