@@ -174,7 +174,7 @@ class ExtractPatternPage(QWidget):
             if event.type() == QEvent.FocusIn:
                 obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             elif event.type() == QEvent.FocusOut:
-                obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
+                obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
         
 class MainWindow(QMainWindow):
