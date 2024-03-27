@@ -228,7 +228,7 @@ class TextReplacePage(QWidget):
         input_layout.addWidget(self.user_input)
 
 
-        self.patterns_input = QLineEdit(self)
+        self.replacement_input = QLineEdit(self)
         self.patterns_input.setPlaceholderText("email, number, name...")
         self.patterns_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.patterns_input.setFixedSize(300, 40)
