@@ -4,12 +4,12 @@ from PySide6.QtGui import QCursor,  QIcon
 from functools import partial
 
 class EventFilterMinxin():
-def eventFilter(self, obj, event):
-        if event.type() == QEvent.FocusIn:
-            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px;")
-        elif event.type() == QEvent.FocusOut:
-            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
-        return super().eventFilter(obj, event)
+    def eventFilter(self, obj, event):
+            if event.type() == QEvent.FocusIn:
+                obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px;")
+            elif event.type() == QEvent.FocusOut:
+                obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
+            return super().eventFilter(obj, event)
     
 class ModernPage(QWidget):
     back_to_main = Signal()  
