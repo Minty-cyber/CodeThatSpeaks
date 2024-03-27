@@ -186,6 +186,9 @@ class TextReplacePage(QWidget):
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
+        top_row_layout = QHBoxLayout()
+        layout.addLayout(top_row_layout)
+        
         
      
         
