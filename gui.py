@@ -165,7 +165,7 @@ class MainWindow(QMainWindow):
         self.central_widget.setCurrentIndex(1)
         
     def show_home_page(self):
-    # Clear existing widgets in the layout
+    
         layout = self.central_widget.layout()
         for i in reversed(range(layout.count())):
             widget = layout.itemAt(i).widget()
