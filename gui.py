@@ -155,11 +155,11 @@ class ExtractPatternPage(QWidget):
         button_layout = QHBoxLayout()
         input_layout.addLayout(button_layout)
 
-        translate_button = QPushButton("Extract", self)
-        translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        translate_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        translate_button.setFixedSize(100, 50)
-        button_layout.addWidget(translate_button)
+        extract_button = QPushButton("Extract", self)
+        extract_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        extract_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        extract_button.setFixedSize(100, 50)
+        button_layout.addWidget(extract_button)
         
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
