@@ -11,7 +11,7 @@ class EventFilterMinxin:
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
             return super().eventFilter(obj, event)
     
-class ModernPage(QWidget, EventFilterMinxin):
+class ModernPage(QWidget, EventFilterMixin):
     back_to_main = Signal()  
 
     def __init__(self):
