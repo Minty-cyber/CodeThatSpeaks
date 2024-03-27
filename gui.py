@@ -92,6 +92,9 @@ class ModernPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px;")
             return super().eventFilter(obj, event)
         
+class HomePage(Qwidget):
+    
+        
     
 
 class MainWindow(QMainWindow):
