@@ -104,7 +104,7 @@ class TextTranslationPage(QWidget):
         target_language_text = self.target_language_input.text()
         
         try:
-            # Convert text to integers and calculate sum
+            
             user_input_num = int(user_input_text)
             target_language_num = int(target_language_text)
             result = user_input_num + target_language_num
