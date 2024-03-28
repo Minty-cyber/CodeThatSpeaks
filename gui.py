@@ -76,6 +76,10 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(translate_button)
         button_layout.addSpacing(60) 
         
+        self.result_label = QLabel("", self)
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke;")
+        input_layout.addWidget(self.result_label)
+        
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
@@ -83,12 +87,8 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(refresh_button)
         
         
+       
         
-        
-        self.result_label = QLabel("", self)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke;")
-        input_layout.addWidget(self.result_label)
-        input_layout.addSpacing(60)
         
     def go_to_main_window(self):
         self.back_to_main.emit()
