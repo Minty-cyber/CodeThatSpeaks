@@ -84,7 +84,7 @@ class TextTranslationPage(QWidget):
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         refresh_button.setFixedSize(100, 50)
-        refresh_button.clicked.connect(self.translate_text)
+        refresh_button.clicked.connect(self.refresh_fields)
         button_layout.addWidget(refresh_button)
         
         
