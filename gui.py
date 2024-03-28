@@ -74,7 +74,6 @@ class TextTranslationPage(QWidget):
         translate_button.setFixedSize(100, 50)
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
-        
         button_layout.addSpacing(60) 
         
         refresh_button = QPushButton("Refresh", self)
@@ -83,7 +82,7 @@ class TextTranslationPage(QWidget):
         refresh_button.setFixedSize(100, 50)
         button_layout.addWidget(refresh_button)
         
-         # Add spacing between the Translate button and the result
+        
         
         
         self.result_label = QLabel("", self)
@@ -117,6 +116,12 @@ class TextTranslationPage(QWidget):
         except ValueError:
             # Handle the case when text cannot be converted to integers
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
+            
+    def refresh_fields(self):
+        self.user_input.clear()
+        self.target_language_input.clear()
+        self.result_label.clear()
+    
         
 class ExtractPatternPage(QWidget):
     back_to_main = Signal() 
