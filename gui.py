@@ -109,7 +109,7 @@ class TextTranslationPage(QWidget):
             target_language_num = int(target_language_text)
             result = user_input_num + target_language_num
             
-            # Display the result in the QLabel
+           
             self.result_label.setText(f"Result: {result}")
         except ValueError:
             # Handle the case when text cannot be converted to integers
