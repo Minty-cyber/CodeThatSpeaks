@@ -72,7 +72,7 @@ class TextTranslationPage(QWidget):
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         translate_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         translate_button.setFixedSize(100, 50)
-        button_layout.addWidget(translate_button)
+        button_layout.addWidget(translate_button, self.translate_text)
         
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
@@ -80,6 +80,9 @@ class TextTranslationPage(QWidget):
         refresh_button.setFixedSize(100, 50)
         button_layout.addWidget(refresh_button)
         
+        self.result_label = QLabel("", self)
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke;")
+        input_layout.addWidget(self.result_label)
         
     def go_to_main_window(self):
         self.back_to_main.emit()
@@ -90,6 +93,23 @@ class TextTranslationPage(QWidget):
             elif event.type() == QEvent.FocusOut:
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
+        
+    def translate_text(self):
+        # Get the text from the user input and target language input fields
+        user_input_text = self.user_input.text()
+        target_language_text = self.target_language_input.text()
+        
+        try:
+            # Convert text to integers and calculate sum
+            user_input_num = int(user_input_text)
+            target_language_num = int(target_language_text)
+            result = user_input_num + target_language_num
+            
+            # Display the result in the QLabel
+            self.result_label.setText(f"Result: {result}")
+        except ValueError:
+            # Handle the case when text cannot be converted to integers
+            self.result_label.setText("Invalid Input: Please enter valid numbers.")
         
 class ExtractPatternPage(QWidget):
     back_to_main = Signal() 
@@ -177,6 +197,7 @@ class ExtractPatternPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
         
+    
         
 class TextReplacePage(QWidget):
     back_to_main = Signal() 
