@@ -100,7 +100,6 @@ class TextTranslationPage(QWidget):
             return super().eventFilter(obj, event)
         
     def translate_text(self):
-        # Get the text from the user input and target language input fields
         user_input_text = self.user_input.text()
         target_language_text = self.target_language_input.text()
         
