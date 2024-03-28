@@ -76,8 +76,6 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(translate_button)
         
         
-        
-        
         self.result_label = QLabel("", self)
         self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
         input_layout.addWidget(self.result_label)
@@ -86,10 +84,9 @@ class TextTranslationPage(QWidget):
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         refresh_button.setFixedSize(100, 50)
+        refresh_button.clicked.connect(self.translate_text)
         button_layout.addWidget(refresh_button)
         
-        
-       
         
         
     def go_to_main_window(self):
