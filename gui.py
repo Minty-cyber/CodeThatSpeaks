@@ -74,6 +74,8 @@ class TextTranslationPage(QWidget):
         translate_button.setFixedSize(100, 50)
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
+        
+        
         button_layout.addSpacing(60) 
         
         self.result_label = QLabel("", self)
