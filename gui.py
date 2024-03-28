@@ -76,10 +76,10 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(translate_button)
         
         
-        button_layout.addSpacing(60) 
+        
         
         self.result_label = QLabel("", self)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke;")
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
         input_layout.addWidget(self.result_label)
         
         refresh_button = QPushButton("Refresh", self)
