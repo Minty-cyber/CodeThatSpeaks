@@ -112,7 +112,6 @@ class TextTranslationPage(QWidget):
            
             self.result_label.setText(f"Result: {result}")
         except ValueError:
-            
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
             
     def refresh_fields(self):
