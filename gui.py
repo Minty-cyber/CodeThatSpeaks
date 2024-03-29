@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget
 from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
-from PySide6.QtGui import QCursor, QIcon, QMo
+from PySide6.QtGui import QCursor, QIcon, QMovie
 from functools import partial
 from basiclingua import BasicLingua
 
@@ -85,6 +85,12 @@ class TextTranslationPage(QWidget):
         translate_button.setFixedSize(100, 50)
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
+        
+        self.loader_movie = QMovie("loader.gif")
+        self.loader_label = QLabel(self)
+        self.loader_label.setMovie(self.loader_movie)
+        self.loader_label.hide()
+        button_layout.addWidget(self.loader_label)
         
         
         self.result_label = QLabel("", self)
