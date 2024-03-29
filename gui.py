@@ -112,8 +112,8 @@ class TextTranslationPage(QWidget):
         
     def translate_text(self, api_input, user_input, target_language_input):
         api_key = self.api_input.text()
-        user_input_text = self.user_input.text()
-        target_language_text = self.target_language_input.text()
+        user_input = self.user_input.text()
+        target_lang= self.target_language_input.text()
         
         try:
             client = BasicLingua(api_key)
