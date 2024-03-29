@@ -86,20 +86,14 @@ class TextTranslationPage(QWidget):
 
         self.loader = QProgressBar(self)
         self.loader.setStyleSheet("QProgressBar {"
-                          "border: 2px solid grey;"
-                          "border-radius: 5px;"
-                          "text-align: center;"
-                          "background-color: #ddd;"
-                          "}"
-                          "QProgressBar::chunk {"
-                          "background-color: #05B8CC;"
-                          "}"
-                          "QProgressBar::chunk {"
-                          "height: 5px;"  # Adjust the height of the chunk
-                          "}"
-                          "QProgressBar {"
-                          "height: 5px;"  # Adjust the height of the progress bar
-                          "}")
+                                  "border: 2px solid grey;"
+                                  "border-radius: 5px;"
+                                  "text-align: center;"
+                                  "background-color: #333;"
+                                  "}"
+                                  "QProgressBar::chunk {"
+                                  "background-color: #4CAF50;"
+                                  "}")
         self.loader.setMinimum(0)
         self.loader.setMaximum(0)
         self.loader.setValue(0)
