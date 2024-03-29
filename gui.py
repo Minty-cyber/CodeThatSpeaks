@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar
-from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
+from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize, QTim
 from PySide6.QtGui import QCursor, QIcon, QMovie
 from functools import partial
 from basiclingua import BasicLingua
@@ -130,13 +130,15 @@ class TextTranslationPage(QWidget):
     def translate_text(self):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
-        target_lang= self.target_language_input.text()
+        target_lang = self.target_language_input.text()
         
+        self.loader.show()
+        self.loader.setRange(0, 0)  # Set the range to indeterminate
+        
+        QTimer.singleShot(100, self.perform_translation, (api_key, user_input, target_lang))
+
+    def perform_translation(self, api_key, user_input, target_lang):
         try:
-            
-            self.loader.show()
-            self.loader.setRange(0, 0)
-            
             client = BasicLingua(api_key)
             translated_text = client.text_translate(user_input, target_lang)
             self.result_label.setText(f"Translated Text: {translated_text}")
@@ -146,8 +148,8 @@ class TextTranslationPage(QWidget):
             
         finally:
             self.loader.hide()
-            self.loader.setRange(0, 1)
-        
+            self.loader.setRange(0, 1)  # Reset the range to normal
+                
 
             
     def refresh_fields(self):
