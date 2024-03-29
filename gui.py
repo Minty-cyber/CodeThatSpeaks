@@ -117,10 +117,10 @@ class TextTranslationPage(QWidget):
         
         try:
             client = BasicLingua(api_key)
-            translated_text = client.translate(user_input, target_language)
+            translated_text = client.translate(user_input, target_lang)
             
            
-            self.result_label.setText(f"Result: {result}")
+            self.result_label.setText(f"Translated Text: {translated_text}")
         except ValueError:
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
             
