@@ -126,7 +126,10 @@ class TextTranslationPage(QWidget):
         except ValueError:
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
             
-   
+    def refresh_fields(self):
+        self.user_input.clear()
+        self.target_language_input.clear()
+        self.result_label.clear()
     
         
 class ExtractPatternPage(QWidget):
@@ -384,11 +387,6 @@ class MainWindow(QMainWindow):
     
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
-
-def refresh_fields(self):
-        self.user_input.clear()
-        self.target_language_input.clear()
-        self.result_label.clear()
 
 if __name__ == "__main__":
     app = QApplication([])
