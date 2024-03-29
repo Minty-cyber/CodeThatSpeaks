@@ -131,11 +131,12 @@ class TextTranslationPage(QWidget):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
         target_lang = self.target_language_input.text()
-        
-        self.loader.show()
-        self.loader.setRange(0, 0)  
-        
-        QTimer.singleShot(100, self.perform_translation, (api_key, user_input, target_lang))
+
+        try:
+            self.loader.show()
+            QTimer.singleShot(100, lambda: self.perform_translation(api_key, user_input, target_lang))
+        except ValueError:
+            self.result_label.setText("Invalid Input: Please enter valid numbers.")
 
     def perform_translation(self, api_key, user_input, target_lang):
        try:
