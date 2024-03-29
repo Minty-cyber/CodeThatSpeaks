@@ -133,7 +133,7 @@ class TextTranslationPage(QWidget):
         target_lang = self.target_language_input.text()
         
         self.loader.show()
-        self.loader.setRange(0, 0)  # Set the range to indeterminate
+        self.loader.setRange(0, 0)  
         
         QTimer.singleShot(100, self.perform_translation, (api_key, user_input, target_lang))
 
