@@ -110,8 +110,8 @@ class TextTranslationPage(QWidget):
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
         
-    def translate_text(self, api_key):
-        api_input_text = self.api_input.text()
+    def translate_text(self, api_input, user_input, target_language_input):
+        api_key = self.api_input.text()
         user_input_text = self.user_input.text()
         target_language_text = self.target_language_input.text()
         
