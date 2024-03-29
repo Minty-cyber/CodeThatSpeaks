@@ -65,8 +65,12 @@ class TextTranslationPage(QWidget):
         input_layout.addWidget(self.target_language_input)
         
         self.api_input = QlineEdit(self)
-        self.api_inpt.setPlaceholderText("Enter API Key")
-        self
+        self.api_input.setPlaceholderText("Enter API Key")
+         self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.target_language_input.setFixedSize(300, 40)
+        self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.target_language_input.installEventFilter(self)
+        input_layout.addWidget(self.target_language_input)
         
 
         layout.addLayout(input_layout)
