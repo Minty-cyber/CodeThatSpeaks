@@ -135,6 +135,7 @@ class TextTranslationPage(QWidget):
         try:
             
             self.loader.show()
+            self.loader.setRange(0, 0)
             
             client = BasicLingua(api_key)
             translated_text = client.text_translate(user_input, target_lang)
@@ -145,6 +146,7 @@ class TextTranslationPage(QWidget):
             
         finally:
             self.loader.hide()
+            self.loader.setRange(0, 1)
         
 
             
