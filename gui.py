@@ -3,23 +3,24 @@ from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize, QTimer
 from PySide6.QtGui import QCursor, QIcon, QMovie
 from functools import partial
 from basiclingua import BasicLingua
+import threading
 
-    
-    
 class TextTranslationPage(QWidget):
-    back_to_main = Signal()  
+    back_to_main = Signal()
+    translation_completed = Signal(str)
+    translation_error = Signal(str)
 
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        
+
         top_row_layout = QHBoxLayout()
         layout.addLayout(top_row_layout)
-        
+
         back_button = QPushButton(self)
-        back_button.setIcon(QIcon("back-button.png")) 
-        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")  
+        back_button.setIcon(QIcon("back-button.png"))
+        back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")
         back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.setStyleSheet("""
@@ -38,15 +39,15 @@ class TextTranslationPage(QWidget):
         """)
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
-        
+
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         input_layout.addSpacing(50)
-        
+
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
         input_layout.addWidget(title_label)
-        
+
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
         self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
@@ -63,7 +64,6 @@ class TextTranslationPage(QWidget):
         self.user_input.installEventFilter(self)
         input_layout.addWidget(self.user_input)
 
-
         self.target_language_input = QLineEdit(self)
         self.target_language_input.setPlaceholderText("Target Language")
         self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
@@ -71,11 +71,9 @@ class TextTranslationPage(QWidget):
         self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.target_language_input.installEventFilter(self)
         input_layout.addWidget(self.target_language_input)
-        
-       
 
         layout.addLayout(input_layout)
-        
+
         button_layout = QHBoxLayout()
         input_layout.addLayout(button_layout)
 
@@ -85,30 +83,16 @@ class TextTranslationPage(QWidget):
         translate_button.setFixedSize(100, 50)
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
-        
-        
-        
-        
-        self.result_label = QLabel("", self)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
-        input_layout.addWidget(self.result_label)
-        
-        refresh_button = QPushButton("Refresh", self)
-        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        refresh_button.setFixedSize(100, 50)
-        refresh_button.clicked.connect(self.refresh_fields)
-        button_layout.addWidget(refresh_button)
-        
+
         self.loader = QProgressBar(self)
         self.loader.setStyleSheet("QProgressBar {"
                                   "border: 2px solid grey;"
                                   "border-radius: 5px;"
                                   "text-align: center;"
-                                  "background-color: #ddd;"
+                                  "background-color: #333;"
                                   "}"
                                   "QProgressBar::chunk {"
-                                  "background-color: #05B8CC;"
+                                  "background-color: #4CAF50;"
                                   "}")
         self.loader.setMinimum(0)
         self.loader.setMaximum(0)
@@ -116,43 +100,48 @@ class TextTranslationPage(QWidget):
         self.loader.setFixedSize(100, 50)
         self.loader.hide()
         button_layout.addWidget(self.loader)
-        
-        
-        
+
+        self.result_label = QLabel("", self)
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
+        input_layout.addWidget(self.result_label)
+
+        refresh_button = QPushButton("Refresh", self)
+        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        refresh_button.setFixedSize(100, 50)
+        refresh_button.clicked.connect(self.refresh_fields)
+        button_layout.addWidget(refresh_button)
+
     def go_to_main_window(self):
         self.back_to_main.emit()
-        
+
     def eventFilter(self, obj, event):
-            if event.type() == QEvent.FocusIn:
-                obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
-            elif event.type() == QEvent.FocusOut:
-                obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
-            return super().eventFilter(obj, event)
+        if event.type() == QEvent.FocusIn:
+            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        elif event.type() == QEvent.FocusOut:
+            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        return super().eventFilter(obj, event)
 
     def translate_text(self):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
         target_lang = self.target_language_input.text()
 
-        try:
-            self.loader.show()
-            QTimer.singleShot(100, lambda: self.perform_translation(api_key, user_input, target_lang))
-        except ValueError:
-            self.result_label.setText("Invalid Input: Please enter valid numbers.")
+        # Start a new thread for translation
+        translation_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, target_lang))
+        translation_thread.start()
 
     def perform_translation(self, api_key, user_input, target_lang):
-       try:
-        client = BasicLingua(api_key)
-        translated_text = client.text_translate(user_input, target_lang)
-        self.result_label.setText(f"Translated Text: {translated_text}")
-        self.loader.hide()  # Hide the loader after setting the translated text
-        
-       except ValueError:
-        self.result_label.setText("Invalid Input: Please enter valid numbers.")
-        self.loader.hide()  # Hide the loader in case of error
-                
+        try:
+            self.loader.show()
+            client = BasicLingua(api_key)
+            translated_text = client.text_translate(user_input, target_lang)
+            self.translation_completed.emit(translated_text)
+        except ValueError as e:
+            self.translation_error.emit(str(e))
+        finally:
+            self.loader.hide()
 
-            
     def refresh_fields(self):
         self.user_input.clear()
         self.target_language_input.clear()
