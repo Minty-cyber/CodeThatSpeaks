@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget
 from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize
-from PySide6.QtGui import QCursor,  QIcon
+from PySide6.QtGui import QCursor, QIcon, QMo
 from functools import partial
 from basiclingua import BasicLingua
 
