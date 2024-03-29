@@ -117,11 +117,11 @@ class TextTranslationPage(QWidget):
         
         try:
             client = BasicLingua(api_key)
-            translated_text = client.translate(user_input, target_lang)
+            translated_text = client.text_translate(user_input, target_lang)
             self.result_label.setText(f"Translated Text: {translated_text}")
             
-        except Exception as e:
-            self.result_label.setText("Translation Error", str(e))
+        except ValueError:
+            self.result_label.setText("Invalid Input: Please enter valid numbers.")
             
     def refresh_fields(self):
         self.user_input.clear()
