@@ -47,7 +47,7 @@ class TextTranslationPage(QWidget):
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
         input_layout.addWidget(title_label)
         
-         self.api_input = QLineEdit(self)
+        self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
         self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.api_input.setFixedSize(300, 40)
