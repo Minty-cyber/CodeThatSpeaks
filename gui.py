@@ -317,6 +317,7 @@ class TextReplacePage(QWidget):
         
      
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -382,3 +383,32 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
     app.exec()
+
+
+
+
+
+
+
+
+
+ # button_3 = QPushButton("Extract Patterns", self)
+        # button_3.setStyleSheet(
+        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        # button_3.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        # button_3.clicked.connect(self.show_modern_page)
+        # grid_layout.addWidget(button_3, 0, 2, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        # button_4 = QPushButton("Detect NER", self)
+        # button_4.setStyleSheet(
+        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        # button_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        # button_4.clicked.connect(self.show_modern_page)
+        # grid_layout.addWidget(button_4, 0, 3, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        # button_5 = QPushButton("Button 5", self)
+        # button_5.setStyleSheet(
+        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
+        # button_5.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        # button_5.clicked.connect(self.show_modern_page)
+        # grid_layout.addWidget(button_5, 1, 0, alignment=Qt.AlignmentFlag.AlignCenter)
