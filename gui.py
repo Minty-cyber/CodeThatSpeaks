@@ -144,8 +144,8 @@ class TextTranslationPage(QWidget):
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
             
         finally:
-            self.loader_label.hide()
-            self.loader_movie.stop()
+            self.loader.hide()
+        
 
             
     def refresh_fields(self):
