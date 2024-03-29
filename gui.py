@@ -86,6 +86,20 @@ class TextTranslationPage(QWidget):
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
         
+        
+        
+        
+        self.result_label = QLabel("", self)
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
+        input_layout.addWidget(self.result_label)
+        
+        refresh_button = QPushButton("Refresh", self)
+        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        refresh_button.setFixedSize(100, 50)
+        refresh_button.clicked.connect(self.refresh_fields)
+        button_layout.addWidget(refresh_button)
+        
         self.loader = QProgressBar(self)
         self.loader.setStyleSheet("QProgressBar {"
                                   "border: 2px solid grey;"
@@ -102,18 +116,6 @@ class TextTranslationPage(QWidget):
         self.loader.setFixedSize(100, 50)
         self.loader.hide()
         button_layout.addWidget(self.loader)
-        
-        
-        self.result_label = QLabel("", self)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
-        input_layout.addWidget(self.result_label)
-        
-        refresh_button = QPushButton("Refresh", self)
-        refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
-        refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        refresh_button.setFixedSize(100, 50)
-        refresh_button.clicked.connect(self.refresh_fields)
-        button_layout.addWidget(refresh_button)
         
         
         
