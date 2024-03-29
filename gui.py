@@ -138,17 +138,15 @@ class TextTranslationPage(QWidget):
         QTimer.singleShot(100, self.perform_translation, (api_key, user_input, target_lang))
 
     def perform_translation(self, api_key, user_input, target_lang):
-        try:
-            client = BasicLingua(api_key)
-            translated_text = client.text_translate(user_input, target_lang)
-            self.result_label.setText(f"Translated Text: {translated_text}")
-            
-        except ValueError:
-            self.result_label.setText("Invalid Input: Please enter valid numbers.")
-            
-        finally:
-            self.loader.hide()
-            self.loader.setRange(0, 1)  # Reset the range to normal
+       try:
+        client = BasicLingua(api_key)
+        translated_text = client.text_translate(user_input, target_lang)
+        self.result_label.setText(f"Translated Text: {translated_text}")
+        self.loader.hide()  # Hide the loader after setting the translated text
+        
+       except ValueError:
+        self.result_label.setText("Invalid Input: Please enter valid numbers.")
+        self.loader.hide()  # Hide the loader in case of error
                 
 
             
