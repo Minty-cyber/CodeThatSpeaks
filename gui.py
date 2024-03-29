@@ -89,7 +89,7 @@ class TextTranslationPage(QWidget):
         self.loader_movie = QMovie("Rocket.gif")
         self.loader_label = QLabel(self)
         self.loader_label.setMovie(self.loader_movie)
-        self.loader_label.hide()
+        self.loader_label.show()
         button_layout.addWidget(self.loader_label)
         
         
