@@ -86,11 +86,22 @@ class TextTranslationPage(QWidget):
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
         
-        self.loader_movie = QMovie("Rocket.gif")
-        self.loader_label = QLabel(self)
-        self.loader_label.setMovie(self.loader_movie)
-        self.loader_label.hide()
-        button_layout.addWidget(self.loader_label)
+        self.loader = QProgressBar(self)
+        self.loader.setStyleSheet("QProgressBar {"
+                                  "border: 2px solid grey;"
+                                  "border-radius: 5px;"
+                                  "text-align: center;"
+                                  "background-color: #ddd;"
+                                  "}"
+                                  "QProgressBar::chunk {"
+                                  "background-color: #05B8CC;"
+                                  "}")
+        self.loader.setMinimum(0)
+        self.loader.setMaximum(0)
+        self.loader.setValue(0)
+        self.loader.setFixedSize(100, 50)
+        self.loader.hide()
+        button_layout.addWidget(self.loader)
         
         
         self.result_label = QLabel("", self)
