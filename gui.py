@@ -66,6 +66,7 @@ class TextTranslationPage(QWidget):
         
         self.api_input = QlineEdit(self)
         self.api_inpt.setPlaceholderText("Enter API Key")
+        self
         
 
         layout.addLayout(input_layout)
