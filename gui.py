@@ -134,8 +134,7 @@ class TextTranslationPage(QWidget):
         
         try:
             
-            self.loader_label.show()
-            self.loader_movie.start()
+            self.loader.show()
             
             client = BasicLingua(api_key)
             translated_text = client.text_translate(user_input, target_lang)
