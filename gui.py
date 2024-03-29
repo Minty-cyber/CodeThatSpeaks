@@ -109,17 +109,15 @@ class TextTranslationPage(QWidget):
             elif event.type() == QEvent.FocusOut:
                 obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
             return super().eventFilter(obj, event)
-        
-    def translate_text(self, api_input, user_input, target_language_input):
+
+    def translate_text(self):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
         target_lang= self.target_language_input.text()
         
         try:
             client = BasicLingua(api_key)
-            user_input_num = int(user_input_text)
-            target_language_num = int(target_language_text)
-            result = user_input_num + target_language_num
+            translated_text = client.translate(user_input, target_language)
             
            
             self.result_label.setText(f"Result: {result}")
