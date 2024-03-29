@@ -325,24 +325,23 @@ class MainWindow(QMainWindow):
 
         self.central_widget = QStackedWidget()
         self.setCentralWidget(self.central_widget)
-        
-        
+
         self.setup_main_window()
         self.setup_text_translation_page()
-        self.setup_extract_pattern_page() 
+        
+        self.showMaximized() 
 
     def setup_main_window(self):
         main_window_widget = QWidget()
         layout = QVBoxLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
-        
-        
+
         main_title_label = QLabel("BasicLingua", self)
         main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         layout.addSpacing(60)
-       
+
         grid_layout = QGridLayout()
         layout.addLayout(grid_layout)
 
@@ -353,56 +352,30 @@ class MainWindow(QMainWindow):
         button_1.clicked.connect(self.show_text_translation_page)
         grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
 
-        button_2 = QPushButton("Extract Patterns", self)
-        button_2.setStyleSheet(
-            "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
-        button_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        button_2.clicked.connect(self.show_extract_patterns_page)
-        grid_layout.addWidget(button_2, 0, 1, alignment=Qt.AlignmentFlag.AlignCenter)
-
-        # button_3 = QPushButton("Extract Patterns", self)
-        # button_3.setStyleSheet(
-        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
-        # button_3.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        # button_3.clicked.connect(self.show_modern_page)
-        # grid_layout.addWidget(button_3, 0, 2, alignment=Qt.AlignmentFlag.AlignCenter)
-
-        # button_4 = QPushButton("Detect NER", self)
-        # button_4.setStyleSheet(
-        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
-        # button_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        # button_4.clicked.connect(self.show_modern_page)
-        # grid_layout.addWidget(button_4, 0, 3, alignment=Qt.AlignmentFlag.AlignCenter)
-
-        # button_5 = QPushButton("Button 5", self)
-        # button_5.setStyleSheet(
-        #     "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
-        # button_5.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        # button_5.clicked.connect(self.show_modern_page)
-        # grid_layout.addWidget(button_5, 1, 0, alignment=Qt.AlignmentFlag.AlignCenter)
-
         self.central_widget.addWidget(main_window_widget)
-
 
     def setup_text_translation_page(self):
         text_translation_page = TextTranslationPage()
         text_translation_page.back_to_main.connect(self.show_main_window)
+        text_translation_page.translation_completed.connect(self.display_translated_text)
+        text_translation_page.translation_error.connect(self.display_translation_error)
         self.central_widget.addWidget(text_translation_page)
-        
-    def setup_extract_pattern_page(self): 
-        extract_pattern_page = ExtractPatternPage()
-        extract_pattern_page.back_to_main.connect(self.show_main_window)
-        self.central_widget.addWidget(extract_pattern_page)
 
     def show_text_translation_page(self):
         self.central_widget.setCurrentIndex(1)
-        
-    def show_extract_patterns_page(self):
-        self.central_widget.setCurrentIndex(2)
-        
-    
+
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
+
+    def display_translated_text(self, translated_text):
+        current_widget = self.central_widget.currentWidget()
+        if isinstance(current_widget, TextTranslationPage):
+            current_widget.result_label.setText(translated_text)
+
+    def display_translation_error(self, error_message):
+        current_widget = self.central_widget.currentWidget()
+        if isinstance(current_widget, TextTranslationPage):
+            current_widget.result_label.setText(f"Translation Error: {error_message}")
 
 if __name__ == "__main__":
     app = QApplication([])
