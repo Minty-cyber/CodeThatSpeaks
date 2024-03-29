@@ -86,7 +86,7 @@ class TextTranslationPage(QWidget):
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
         
-        self.loader_movie = QMovie("loader.gif")
+        self.loader_movie = QMovie("Rocket.gif")
         self.loader_label = QLabel(self)
         self.loader_label.setMovie(self.loader_movie)
         self.loader_label.hide()
@@ -132,6 +132,11 @@ class TextTranslationPage(QWidget):
             
         except ValueError:
             self.result_label.setText("Invalid Input: Please enter valid numbers.")
+            
+        finally:
+            self.loader_label.hide()
+            self.loader_movie.stop()
+
             
     def refresh_fields(self):
         self.user_input.clear()
