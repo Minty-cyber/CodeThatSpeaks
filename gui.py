@@ -65,6 +65,8 @@ class TextTranslationPage(QWidget):
         input_layout.addWidget(self.target_language_input)
         
         self.api_input = QlineEdit(self)
+        self.api_input = QlineEdit(self)
+        
 
         layout.addLayout(input_layout)
         
