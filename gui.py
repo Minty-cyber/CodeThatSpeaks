@@ -103,7 +103,7 @@ class TextTranslationPage(QWidget):
 
         self.result_label = QLabel("", self)
         self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
-        input_layout.addWidget(self.result_label)
+        button_layout.addWidget(self.result_label)
 
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
@@ -234,6 +234,7 @@ class ExtractPatternPage(QWidget):
         self.loader.setFixedSize(100, 50)
         self.loader.hide()
         button_layout.addWidget(self.loader)
+
 
         
         refresh_button = QPushButton("Refresh", self)
