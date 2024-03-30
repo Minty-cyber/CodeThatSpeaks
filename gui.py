@@ -127,7 +127,6 @@ class TextTranslationPage(QWidget):
         user_input = self.user_input.text()
         target_lang = self.target_language_input.text()
 
-        # Start a new thread for translation
         translation_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, target_lang))
         translation_thread.start()
 
