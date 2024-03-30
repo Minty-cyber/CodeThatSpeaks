@@ -272,7 +272,7 @@ class ExtractPatternPage(QWidget):
         user_input = self.user_input.text()
         patterns = self.patterns_input.text()
 
-        extract_patterns_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, patterns))
+        extract_patterns_thread = threading.Thread(target=self.perform_extraction, args=(api_key, user_input, patterns))
         extract_patterns_thread.start()
 
     def perform_extraction(self, api_key, user_input, patterns):
@@ -452,7 +452,7 @@ class MainWindow(QMainWindow):
         self.central_widget.setCurrentIndex(2)
 
     def show_main_window(self):
-        self.central_widget.setCurrentIndex(0)
+        self.central_widget.setCurrentIndex(1)
 
     def display_extracted_patterns(self, extracted_patterns):
         current_widget = self.central_widget.currentWidget()
