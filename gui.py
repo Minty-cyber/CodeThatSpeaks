@@ -42,11 +42,13 @@ class TextTranslationPage(QWidget):
 
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        input_layout.addSpacing(50)
+        # input_layout.addSpacing(50)
 
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
         input_layout.addWidget(title_label)
+
+        api_user_layout = QHBoxLayout()
 
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
@@ -54,14 +56,16 @@ class TextTranslationPage(QWidget):
         self.api_input.setFixedSize(300, 40)
         self.api_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.api_input.installEventFilter(self)
-        input_layout.addWidget(self.api_input)
+        api_user_layout.addWidget(self.api_input)
 
-        self.user_input = QTextEdit(self) 
+        self.user_input = QTextEdit(self)  # Changed to QTextEdit
         self.user_input.setPlaceholderText("User Input")
         self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
-        self.user_input.setFixedSize(300, 100) 
+        self.user_input.setFixedSize(300, 100)  # Adjusted height to accommodate multiple lines
         self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        input_layout.addWidget(self.user_input)
+        api_user_layout.addWidget(self.user_input)
+
+        input_layout.addLayout(api_user_layout)
         
         self.target_language_input = QLineEdit(self)
         self.target_language_input.setPlaceholderText("Target Language")
