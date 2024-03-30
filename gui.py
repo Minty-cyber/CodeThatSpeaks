@@ -280,7 +280,7 @@ class ExtractPatternPage(QWidget):
             extracted_patterns = client.extract_patterns(user_input, patterns)
             self.extraction_completed.emit(extracted_patterns)
         except ValueError as e:
-            self.translation_error.emit(str(e))
+            self.extraction_error.emit(str(e))
         finally:
             self.loader.hide()
 
