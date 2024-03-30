@@ -1,6 +1,6 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar, QSizePolicy
 from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize, QTimer
-from PySide6.QtGui import QCursor, QIcon, QMovie
+from PySide6.QtGui import QCursor, QIcon, QMovie, QTextOption
 from functools import partial
 from basiclingua import BasicLingua
 import threading
@@ -99,14 +99,12 @@ class TextTranslationPage(QWidget):
         self.loader.hide()
         button_layout.addWidget(self.loader)
 
-        self.result_container = QWidget(self)
-        self.result_container.setStyleSheet("border: 2px solid white; border-radius: 5px;")
-        result_layout = QVBoxLayout(self.result_container)
-        self.result_label = QLabel("", self.result_container)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin: 10px;")
-        result_layout.addWidget(self.result_label)
-        layout.addWidget(self.result_container)
-        self.result_container.hide()
+        self.result_text_edit = QTextEdit("", self)
+        self.result_text_edit.setStyleSheet("font-size: 18px; color: whitesmoke;")
+        self.result_text_edit.setReadOnly(True)
+        self.result_text_edit.setWordWrapMode(QTextOption.WrapAtWordBoundaryOrAnywhere)
+        self.result_text_edit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        input_layout.addWidget(self.result_text_edit)
 
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
@@ -147,8 +145,7 @@ class TextTranslationPage(QWidget):
     def refresh_fields(self):
         self.user_input.clear()
         self.target_language_input.clear()
-        self.result_label.clear()
-
+        self.result_text_edit.clear()
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -203,12 +200,12 @@ class MainWindow(QMainWindow):
     def display_translated_text(self, translated_text):
         current_widget = self.central_widget.currentWidget()
         if isinstance(current_widget, TextTranslationPage):
-            current_widget.result_label.setText(translated_text)
+            current_widget.result_text_edit.setText(translated_text)
 
     def display_translation_error(self, error_message):
         current_widget = self.central_widget.currentWidget()
         if isinstance(current_widget, TextTranslationPage):
-            current_widget.result_label.setText(f"Translation Error: {error_message}")
+            current_widget.result_text_edit.setText(f"Translation Error: {error_message}")
 
     
          
