@@ -273,11 +273,11 @@ class ExtractPatternPage(QWidget):
         extract_patterns_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, patterns))
         extract_patterns_thread.start()
 
-    def perform_extraction(self, api_key, user_input, target_lang):
+    def perform_extraction(self, api_key, user_input, patterns):
         try:
             self.loader.show()
             client = BasicLingua(api_key)
-            extracted_patterns = client.extract_patterns(user_input, target_lang)
+            extracted_patterns = client.extract_patterns(user_input, patterns)
             self.translation_completed.emit(translated_text)
         except ValueError as e:
             self.translation_error.emit(str(e))
