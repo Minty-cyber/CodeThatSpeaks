@@ -218,28 +218,7 @@ class MainWindow(QMainWindow):
 
     
     
-    def setup_extract_patterns_page(self):
-        extract_patterns_page = ExtractPatternPage()
-        extract_patterns_page.back_to_main.connect(self.show_main_window)
-        extract_patterns_page.extraction_completed.connect(self.display_extracted_patterns)
-        extract_patterns_page.extraction_error.connect(self.display_extraction_error)
-        self.central_widget.addWidget(extract_patterns_page)
     
-    def show_extract_patterns_page(self):
-        self.central_widget.setCurrentIndex(2)
-
-    def show_main_window(self):
-        self.central_widget.setCurrentIndex(0)
-
-    def display_extracted_patterns(self, extracted_patterns):
-        current_widget = self.central_widget.currentWidget()
-        if isinstance(current_widget, ExtractPatternPage):
-            current_widget.result_label.setText(extracted_patterns)
-
-    def display_extraction_error(self, error_message):
-        current_widget = self.central_widget.currentWidget()
-        if isinstance(current_widget, ExtractPatternPage):
-            current_widget.result_label.setText(f"Extraction Error: {error_message}")
             
     
             
