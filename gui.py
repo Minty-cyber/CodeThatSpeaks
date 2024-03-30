@@ -234,6 +234,10 @@ class ExtractPatternPage(QWidget):
         self.loader.setFixedSize(100, 50)
         self.loader.hide()
         button_layout.addWidget(self.loader)
+        
+        self.result_label = QLabel("", self)
+        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
+        input_layout.addWidget(self.result_label)
 
     
         
