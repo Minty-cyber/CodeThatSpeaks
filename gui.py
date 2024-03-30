@@ -260,7 +260,7 @@ class ExtractPatternPage(QWidget):
     def extract_patterns(self):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
-        target_lang = self.target_language_input.text()
+        patterns = self.target_language_input.text()
 
         translation_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, target_lang))
         translation_thread.start()
