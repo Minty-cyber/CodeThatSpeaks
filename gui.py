@@ -277,7 +277,7 @@ class ExtractPatternPage(QWidget):
         try:
             self.loader.show()
             client = BasicLingua(api_key)
-            translated_text = client.text_translate(user_input, target_lang)
+            extracted_patterns = client.extract_patterns(user_input, target_lang)
             self.translation_completed.emit(translated_text)
         except ValueError as e:
             self.translation_error.emit(str(e))
