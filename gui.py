@@ -148,7 +148,9 @@ class TextTranslationPage(QWidget):
     
         
 class ExtractPatternPage(QWidget):
-    back_to_main = Signal() 
+    back_to_main = Signal()
+    translation_completed = Signal(str)
+    translation_error = Signal(str)
     
     def __init__(self):
         super().__init__()
