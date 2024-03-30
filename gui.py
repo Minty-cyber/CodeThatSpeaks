@@ -453,7 +453,7 @@ class MainWindow(QMainWindow):
     def show_main_window(self):
         self.central_widget.setCurrentIndex(0)
 
-    def display_extracted_patterns(self, translated_text):
+    def display_extracted_patterns(self, extracted_patterns):
         current_widget = self.central_widget.currentWidget()
         if isinstance(current_widget, ExtractPatternPage):
             current_widget.result_label.setText(extracted_patterns)
