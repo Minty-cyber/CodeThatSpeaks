@@ -460,7 +460,7 @@ class MainWindow(QMainWindow):
 
     def display_extraction_error(self, error_message):
         current_widget = self.central_widget.currentWidget()
-        if isinstance(current_widget, TextTranslationPage):
+        if isinstance(current_widget, ExtractPatternPage):
             current_widget.result_label.setText(f"Extraction Error: {error_message}")
 if __name__ == "__main__":
     app = QApplication([])
