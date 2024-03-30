@@ -406,12 +406,13 @@ class MainWindow(QMainWindow):
         button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         button_1.clicked.connect(self.show_text_translation_page)
         grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
-        button_1 = QPushButton("Text Translation", self)
-        button_1.setStyleSheet(
+        
+        button_2 = QPushButton("Extract Patterns", self)
+        button_2.setStyleSheet(
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         button_1.clicked.connect(self.show_text_translation_page)
-        grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
+        grid_layout.addWidget(button_1, 0, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
         self.central_widget.addWidget(main_window_widget)
 
