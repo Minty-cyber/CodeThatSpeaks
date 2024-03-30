@@ -257,7 +257,7 @@ class ExtractPatternPage(QWidget):
             obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
         return super().eventFilter(obj, event)
 
-    def translate_text(self):
+    def extract_text(self):
         api_key = self.api_input.text()
         user_input = self.user_input.text()
         target_lang = self.target_language_input.text()
