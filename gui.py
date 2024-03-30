@@ -224,6 +224,8 @@ class ExtractPatternPage(QWidget):
         extract_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         extract_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         extract_button.setFixedSize(100, 50)
+        extract_button.clicked.connect(self.extract_patterns)
+        
         button_layout.addWidget(extract_button)
         
         self.loader = QProgressBar(self)
