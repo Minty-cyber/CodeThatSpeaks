@@ -383,6 +383,8 @@ class MainWindow(QMainWindow):
 
         self.setup_main_window()
         self.setup_text_translation_page()
+        self.setup_extract_patterns_page()
+        
         
         self.showMaximized() 
 
@@ -444,15 +446,15 @@ class MainWindow(QMainWindow):
     def setup_extract_patterns_page(self):
         extract_patterns_page = ExtractPatternPage()
         extract_patterns_page.back_to_main.connect(self.show_main_window)
-        extract_patterns_page.translation_completed.connect(self.display_extracted_patterns)
-        extract_patterns_page.translation_error.connect(self.display_extraction_error)
+        extract_patterns_page.extraction_completed.connect(self.display_extracted_patterns)
+        extract_patterns_page.extraction_error.connect(self.display_extraction_error)
         self.central_widget.addWidget(extract_patterns_page)
     
     def show_extract_patterns_page(self):
         self.central_widget.setCurrentIndex(2)
 
     def show_main_window(self):
-        self.central_widget.setCurrentIndex(1)
+        self.central_widget.setCurrentIndex(0)
 
     def display_extracted_patterns(self, extracted_patterns):
         current_widget = self.central_widget.currentWidget()
