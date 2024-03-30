@@ -439,14 +439,15 @@ class MainWindow(QMainWindow):
         if isinstance(current_widget, TextTranslationPage):
             current_widget.result_label.setText(f"Translation Error: {error_message}")
 
-    def setup_text_translation_page(self):
-        text_translation_page = TextTranslationPage()
+    
+    
+    def setup_extract_patterns_page(self):
+        text_translation_page = ExtractPatternPage()
         text_translation_page.back_to_main.connect(self.show_main_window)
-        text_translation_page.translation_completed.connect(self.display_translated_text)
-        text_translation_page.translation_error.connect(self.display_translation_error)
+        text_translation_page.translation_completed.connect(self.display_extracted_patterns)
+        text_translation_page.translation_error.connect(self.display_extraction_error)
         self.central_widget.addWidget(text_translation_page)
-        
-
+    
     def show_extract_patterns_page(self):
         self.central_widget.setCurrentIndex(2)
 
@@ -462,6 +463,8 @@ class MainWindow(QMainWindow):
         current_widget = self.central_widget.currentWidget()
         if isinstance(current_widget, ExtractPatternPage):
             current_widget.result_label.setText(f"Extraction Error: {error_message}")
+            
+    
             
 if __name__ == "__main__":
     app = QApplication([])
