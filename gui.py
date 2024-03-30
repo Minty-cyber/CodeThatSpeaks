@@ -411,7 +411,7 @@ class MainWindow(QMainWindow):
         button_2.setStyleSheet(
             "background-color: #4CAF50; color: white; font-size: 20px; padding: 10px; border: none; border-radius: 10px;")
         button_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        button_2.clicked.connect(self.show_text_translation_page)
+        button_2.clicked.connect(self.show_extract_patterns_page)
         grid_layout.addWidget(button_2, 0, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
         self.central_widget.addWidget(main_window_widget)
