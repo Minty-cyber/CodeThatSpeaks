@@ -56,13 +56,7 @@ class TextTranslationPage(QWidget):
         self.api_input.installEventFilter(self)
         input_layout.addWidget(self.api_input)
 
-        self.user_input = QLineEdit(self)
-        self.user_input.setPlaceholderText("User Input")
-        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
-        self.user_input.setFixedSize(300, 40)
-        self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.user_input.installEventFilter(self)
-        input_layout.addWidget(self.user_input)
+        
 
         self.user_input = QTextEdit(self)  # Changed to QTextEdit
         self.user_input.setPlaceholderText("User Input")
@@ -70,6 +64,15 @@ class TextTranslationPage(QWidget):
         self.user_input.setFixedSize(300, 100)  # Adjusted height to accommodate multiple lines
         self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         input_layout.addWidget(self.user_input)
+        
+        self.target_language_input = QLineEdit(self)
+        self.target_language_input.setPlaceholderText("Target Language")
+        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.target_language_input.setFixedSize(300, 40)
+        self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.target_language_input.installEventFilter(self)
+        input_layout.addWidget(self.target_language_input)
+
 
         layout.addLayout(input_layout)
 
@@ -157,9 +160,7 @@ class MainWindow(QMainWindow):
 
         self.setup_main_window()
         self.setup_text_translation_page()
-       
-        
-        
+    
         self.showMaximized() 
 
     def setup_main_window(self):
