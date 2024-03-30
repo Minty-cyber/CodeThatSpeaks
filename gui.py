@@ -240,7 +240,6 @@ class ExtractPatternPage(QWidget):
         input_layout.addWidget(self.result_label)
 
     
-        
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
@@ -250,13 +249,37 @@ class ExtractPatternPage(QWidget):
         
     def go_to_main_window(self):
         self.back_to_main.emit()
-        
+
     def eventFilter(self, obj, event):
-            if event.type() == QEvent.FocusIn:
-                obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
-            elif event.type() == QEvent.FocusOut:
-                obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
-            return super().eventFilter(obj, event)
+        if event.type() == QEvent.FocusIn:
+            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        elif event.type() == QEvent.FocusOut:
+            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+        return super().eventFilter(obj, event)
+
+    def translate_text(self):
+        api_key = self.api_input.text()
+        user_input = self.user_input.text()
+        target_lang = self.target_language_input.text()
+
+        translation_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, target_lang))
+        translation_thread.start()
+
+    def perform_translation(self, api_key, user_input, target_lang):
+        try:
+            self.loader.show()
+            client = BasicLingua(api_key)
+            translated_text = client.text_translate(user_input, target_lang)
+            self.translation_completed.emit(translated_text)
+        except ValueError as e:
+            self.translation_error.emit(str(e))
+        finally:
+            self.loader.hide()
+
+    def refresh_fields(self):
+        self.user_input.clear()
+        self.target_language_input.clear()
+        self.result_label.clear()
         
     
         
