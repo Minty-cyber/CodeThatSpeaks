@@ -462,6 +462,7 @@ class MainWindow(QMainWindow):
         current_widget = self.central_widget.currentWidget()
         if isinstance(current_widget, ExtractPatternPage):
             current_widget.result_label.setText(f"Extraction Error: {error_message}")
+            
 if __name__ == "__main__":
     app = QApplication([])
     window = MainWindow()
