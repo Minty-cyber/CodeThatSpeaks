@@ -288,7 +288,7 @@ class ExtractPatternPage(QWidget):
 
     def refresh_fields(self):
         self.user_input.clear()
-        self.target_language_input.clear()
+        self.patterns_input.clear()
         self.result_label.clear()
         
     
