@@ -1,8 +1,6 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QGridLayout, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar
 from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize, QTimer
 from PySide6.QtGui import QCursor, QIcon, QMovie
-from functools import partial
-from basiclingua import BasicLingua
 import threading
 
 class TextTranslationPage(QWidget):
@@ -42,7 +40,6 @@ class TextTranslationPage(QWidget):
 
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        # input_layout.addSpacing(50)
 
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
@@ -52,13 +49,13 @@ class TextTranslationPage(QWidget):
 
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
-        self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
         self.api_input.setFixedSize(300, 40)
         self.api_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.api_input.installEventFilter(self)
         api_user_layout.addWidget(self.api_input)
 
-        self.user_input = QTextEdit(self)  
+        self.user_input = QTextEdit(self)
         self.user_input.setPlaceholderText("User Input")
         self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.user_input.setFixedSize(300, 400)  
@@ -75,11 +72,10 @@ class TextTranslationPage(QWidget):
         self.target_language_input.installEventFilter(self)
         input_layout.addWidget(self.target_language_input)
 
-
         layout.addLayout(input_layout)
 
         button_layout = QHBoxLayout()
-        input_layout.addLayout(button_layout)
+        layout.addLayout(button_layout)
 
         translate_button = QPushButton("Translate", self)
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
@@ -88,33 +84,13 @@ class TextTranslationPage(QWidget):
         translate_button.clicked.connect(self.translate_text)
         button_layout.addWidget(translate_button)
 
-        self.loader = QProgressBar(self)
-        self.loader.setStyleSheet("QProgressBar {"
-                                  "border: 2px solid grey;"
-                                  "border-radius: 5px;"
-                                  "text-align: center;"
-                                  "background-color: #333;"
-                                  "}"
-                                  "QProgressBar::chunk {"
-                                  "background-color: #4CAF50;"
-                                  "}")
-        self.loader.setMinimum(0)
-        self.loader.setMaximum(0)
-        self.loader.setValue(0)
-        self.loader.setFixedSize(100, 50)
-        self.loader.hide()
-        button_layout.addWidget(self.loader)
-
-        self.result_label = QLabel("", self)
-        self.result_label.setStyleSheet("font-size: 18px; color: whitesmoke; margin-top: 20px;")
-        input_layout.addWidget(self.result_label)
-
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         refresh_button.setFixedSize(100, 50)
         refresh_button.clicked.connect(self.refresh_fields)
         button_layout.addWidget(refresh_button)
+
 
     def go_to_main_window(self):
         self.back_to_main.emit()
