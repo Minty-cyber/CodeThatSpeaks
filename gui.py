@@ -442,11 +442,11 @@ class MainWindow(QMainWindow):
     
     
     def setup_extract_patterns_page(self):
-        text_translation_page = ExtractPatternPage()
-        text_translation_page.back_to_main.connect(self.show_main_window)
-        text_translation_page.translation_completed.connect(self.display_extracted_patterns)
-        text_translation_page.translation_error.connect(self.display_extraction_error)
-        self.central_widget.addWidget(text_translation_page)
+        extract_patterns_page = ExtractPatternPage()
+        extract_patterns_page.back_to_main.connect(self.show_main_window)
+        extract_patterns_page.translation_completed.connect(self.display_extracted_patterns)
+        extract_patterns_page.translation_error.connect(self.display_extraction_error)
+        self.central_widget.addWidget(extract_patterns_page)
     
     def show_extract_patterns_page(self):
         self.central_widget.setCurrentIndex(2)
