@@ -218,6 +218,24 @@ class ExtractPatternPage(QWidget):
         extract_button.setFixedSize(100, 50)
         button_layout.addWidget(extract_button)
         
+        self.loader = QProgressBar(self)
+        self.loader.setStyleSheet("QProgressBar {"
+                                  "border: 2px solid grey;"
+                                  "border-radius: 5px;"
+                                  "text-align: center;"
+                                  "background-color: #333;"
+                                  "}"
+                                  "QProgressBar::chunk {"
+                                  "background-color: #4CAF50;"
+                                  "}")
+        self.loader.setMinimum(0)
+        self.loader.setMaximum(0)
+        self.loader.setValue(0)
+        self.loader.setFixedSize(100, 50)
+        self.loader.hide()
+        button_layout.addWidget(self.loader)
+
+        
         refresh_button = QPushButton("Refresh", self)
         refresh_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         refresh_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
