@@ -189,6 +189,14 @@ class ExtractPatternPage(QWidget):
         title_label = QLabel("Extract Pattern", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; margin-bottom: 20px; color: whitesmoke;")
         input_layout.addWidget(title_label)
+        
+        self.api_input = QLineEdit(self)
+        self.api_input.setPlaceholderText("Enter API Key")
+        self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.api_input.setFixedSize(300, 40)
+        self.api_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.api_input.installEventFilter(self)
+        input_layout.addWidget(self.api_input)
 
         self.user_input = QLineEdit(self)
         self.user_input.setPlaceholderText("Enter text to extract patterns")
