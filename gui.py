@@ -183,7 +183,6 @@ class MainWindow(QMainWindow):
         button_1.clicked.connect(self.show_text_translation_page)
         grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
         
-
         self.central_widget.addWidget(main_window_widget)
 
     def setup_text_translation_page(self):
