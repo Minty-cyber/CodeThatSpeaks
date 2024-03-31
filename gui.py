@@ -30,7 +30,7 @@ class TextTranslationPage(QWidget):
             }
 
             QPushButton:hover {
-                background-color: black; /* Change color on hover */
+                background-color: #45a049; /* Change color on hover */
             }
         """)
         back_button.setFixedSize(70, 100)
