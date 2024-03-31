@@ -106,7 +106,7 @@ class TextTranslationPage(QWidget):
         self.loader.hide()
         button_layout.addWidget(self.loader)
 
-        self.result_text_edit = QTextEdit("", self)
+        self.result_text_edit = QTextEdit(self)
         self.result_text_edit.setStyleSheet("font-size: 18px; color: whitesmoke;")
         self.result_text_edit.setReadOnly(True)
         self.result_text_edit.setWordWrapMode(QTextOption.WrapAtWordBoundaryOrAnywhere)
