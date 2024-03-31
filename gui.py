@@ -80,6 +80,7 @@ class TextTranslationPage(QWidget):
         layout.addLayout(input_layout)
 
         button_layout = QHBoxLayout()
+        button_layout.setContentsMargins(0, 0, 0, 0)
         input_layout.addLayout(button_layout)
 
         translate_button = QPushButton("Translate", self)
@@ -107,7 +108,7 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(self.loader)
 
         self.result_text_edit = QTextEdit(self)
-        self.result_text_edit.setStyleSheet("font-size: 18px; color: whitesmoke; background-color: #444; border: 1px solid #555; border-radius: 5px;")
+        self.result_text_edit.setStyleSheet("font-size: 18px; color: whitesmoke; background-color: #444; border: 1px solid #555; border-radius: 10px;")
 
         self.result_text_edit.setReadOnly(True)
         self.result_text_edit.setWordWrapMode(QTextOption.WrapAtWordBoundaryOrAnywhere)
