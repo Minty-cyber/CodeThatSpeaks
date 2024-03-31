@@ -233,7 +233,6 @@ class MainWindow(QMainWindow):
         if isinstance(current_widget, TextTranslationPage):
             current_widget.result_text_edit.setText(f"Translation Error: {error_message}")
 
-
 if __name__ == "__main__":
     app = QApplication([])
     window = MainWindow()
