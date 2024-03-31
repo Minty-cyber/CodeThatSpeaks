@@ -147,6 +147,7 @@ class TextTranslationPage(QWidget):
             self.loader.hide()
 
     def refresh_fields(self):
+        api_input
         self.user_input.clear()
         self.target_language_input.clear()
         self.result_text_edit.clear()
