@@ -33,6 +33,7 @@ class TextTranslationPage(QWidget):
                 background-color: #45a049; /* Change color on hover */
             }
         """)
+        
         back_button.setFixedSize(70, 100)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
