@@ -109,11 +109,11 @@ class TextTranslationPage(QWidget):
         button_layout.addWidget(refresh_button)
 
         # Download button for PDF
-        self.download_button = QPushButton("Download PDF", self)
+        self.download_button = QPushButton("Download Word", self)
         self.download_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         self.download_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.download_button.setFixedSize(150, 50)
-        self.download_button.clicked.connect(self.download_pdf)
+        self.download_button.clicked.connect(self.download_word)
         button_layout.addWidget(self.download_button)
 
     def go_to_main_window(self):
