@@ -150,25 +150,20 @@ class TextTranslationPage(QWidget):
         self.target_language_input.clear()
         self.result_text_edit.clear()
 
-    def download_pdf(self):
+     def download_word(self):
         translated_text = self.result_text_edit.toPlainText()
         if translated_text:
-            file_path, _ = QFileDialog.getSaveFileName(self, "Save PDF", "", "PDF Files (*.pdf)")
+            file_path, _ = QFileDialog.getSaveFileName(self, "Save Word", "", "Word Files (*.docx)")
             if file_path:
-                file_name = self.generate_pdf(translated_text, file_path)
-                QMessageBox.information(self, "Download", f"PDF generated and saved as {file_name}.")
+                self.generate_word(translated_text, file_path)
+                QMessageBox.information(self, "Download", f"Word document saved as {file_path}.")
         else:
-            QMessageBox.warning(self, "No Translated Text", "Please perform translation before downloading PDF.")
+            QMessageBox.warning(self, "No Translated Text", "Please perform translation before downloading Word document.")
 
-    def generate_pdf(self, translated_text, file_path):
-        c = canvas.Canvas(file_path, pagesize=letter)
-        text = translated_text.split('\n')
-        y = 750
-        for line in text:
-            c.drawString(50, y, line)
-            y -= 15
-        c.save()
-        return file_path
+    def generate_word(self, translated_text, file_path):
+        doc = Document()
+        doc.add_paragraph(translated_text)
+        doc.save(file_path)
 
 class MainWindow(QMainWindow):
     def __init__(self):
