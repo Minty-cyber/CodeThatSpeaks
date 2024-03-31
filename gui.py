@@ -150,7 +150,7 @@ class TextTranslationPage(QWidget):
         self.target_language_input.clear()
         self.result_text_edit.clear()
 
-     def download_word(self):
+    def download_word(self):
         translated_text = self.result_text_edit.toPlainText()
         if translated_text:
             file_path, _ = QFileDialog.getSaveFileName(self, "Save Word", "", "Word Files (*.docx)")
