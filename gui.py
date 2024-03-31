@@ -41,10 +41,13 @@ class TextTranslationPage(QWidget):
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
+        input_fields_layout = QVBoxLayout()  
+        input_fields_layout.setAlignment(Qt.AlignmentFlag.AlignCenter) 
+        
 
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
-        input_layout.addWidget(title_label)
+        input_fields_layout.addWidget(title_label)
         
         
 
