@@ -90,6 +90,7 @@ class TextTranslationPage(QWidget):
                                   "text-align: center;"
                                   "background-color: #333;"
                                   "}"
+                                  
                                   "QProgressBar::chunk {"
                                   "background-color: #4CAF50;"
                                   "}")
