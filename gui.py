@@ -185,7 +185,7 @@ class MainWindow(QMainWindow):
         self.setup_main_window()
         self.setup_text_translation_page()
 
-        self.resize(800, 600)
+        self.setFixedSize(800, 600)
 
     def setup_main_window(self):
         main_window_widget = QWidget()
