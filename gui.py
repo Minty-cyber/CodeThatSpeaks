@@ -186,7 +186,6 @@ class MainWindow(QMainWindow):
         self.setup_text_translation_page()
 
         self.resize(800, 600)
-        self.showMaximized()
 
     def setup_main_window(self):
         main_window_widget = QWidget()
