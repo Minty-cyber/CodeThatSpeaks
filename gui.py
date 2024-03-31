@@ -55,7 +55,7 @@ class TextTranslationPage(QWidget):
         self.api_input.setFixedSize(300, 40)
         self.api_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.api_input.installEventFilter(self)
-        input_layout.addWidget(self.api_input)
+        input_fields_layout.addWidget(self.api_input)
 
         self.user_input = QTextEdit(self) 
         self.user_input.setPlaceholderText("User Input")
