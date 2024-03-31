@@ -22,7 +22,6 @@ class TextTranslationPage(QWidget):
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png"))
         back_button.setStyleSheet("background-color: none; border: none; color: black;")
-        back_button.setFixedSize(100, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
