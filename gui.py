@@ -124,6 +124,17 @@ class TextTranslationPage(QWidget):
 
     def go_to_main_window(self):
         self.back_to_main.emit()
+    
+    def download_pdf(self, translated_text):
+        file_name = "translated_text.pdf"
+        c = canvas.Canvas(file_name, pagesize=letter)
+        text = translated_text.split('\n')
+        y = 750
+        for line in text:
+            c.drawString(50, y, line)
+            y -= 15
+        c.save()
+        return file_name
 
     def eventFilter(self, obj, event):
         if event.type() == QEvent.FocusIn:
