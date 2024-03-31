@@ -28,7 +28,6 @@ class TextTranslationPage(QWidget):
                 border: none;
                 border-radius: 5px;
             }
-
             QPushButton:hover {
                 background-color: #45a049; /* Change color on hover */
             }
