@@ -184,7 +184,7 @@ class MainWindow(QMainWindow):
         layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
         main_title_label = QLabel("Text Translator", self)
-        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
+        main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: black;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         layout.addSpacing(60)
