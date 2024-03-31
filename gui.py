@@ -21,14 +21,25 @@ class TextTranslationPage(QWidget):
 
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png"))
-        back_button.setStyleSheet("background-color: none; border: none; color: black;")
+        back_button.setStyleSheet("""
+            QPushButton {
+                background-color: none;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+
+            QPushButton:hover {
+                background-color: #45a049; /* Change color on hover */
+            }
+        """)
+        back_button.setFixedSize(70, 100)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
 
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
         input_fields_layout = QVBoxLayout()
         input_fields_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
