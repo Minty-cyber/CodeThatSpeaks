@@ -92,6 +92,7 @@ class TextTranslationPage(QWidget):
                                   "QProgressBar::chunk {"
                                   "background-color: #4CAF50;"
                                   "}")
+        
         self.loader.setMinimum(0)
         self.loader.setMaximum(0)
         self.loader.setValue(0)
