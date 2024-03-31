@@ -30,7 +30,6 @@ class TextTranslationPage(QWidget):
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-    
         input_fields_layout = QVBoxLayout()
         input_fields_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
