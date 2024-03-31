@@ -1,6 +1,6 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar, QSizePolicy, QMessageBox
-from PySide6.QtCore import Qt, QTimer, QEvent, QObject, Signal, QSize, QTimer
-from PySide6.QtGui import QCursor, QIcon, QMovie, QTextOption
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QLineEdit, QStackedWidget, QProgressBar, QSizePolicy, QMessageBox, QFileDialog
+from PySide6.QtCore import Qt, QEvent, Signal
+from PySide6.QtGui import QIcon, QCursor, QTextOption
 from functools import partial
 from basiclingua import BasicLingua
 import threading
@@ -25,33 +25,18 @@ class TextTranslationPage(QWidget):
         back_button.setStyleSheet("background-color: #333; border: none; color: whitesmoke;")
         back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        back_button.setStyleSheet("""
-            QPushButton {
-                background-color: none;
-                color: white;
-                border: none;
-                border-radius: 5px;
-            }
-
-            QPushButton:hover {
-                background-color: #45a049; /* Change color on hover */
-            }
-        """)
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
 
         input_layout = QVBoxLayout()
         input_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        
-        input_fields_layout = QVBoxLayout()  
-        input_fields_layout.setAlignment(Qt.AlignmentFlag.AlignCenter) 
-        
 
         title_label = QLabel("Text Translation", self)
         title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
-        input_fields_layout.addWidget(title_label)
-        
-        
+        input_layout.addWidget(title_label)
+
+        input_fields_layout = QVBoxLayout()
+        input_fields_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
@@ -75,9 +60,8 @@ class TextTranslationPage(QWidget):
         self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.target_language_input.installEventFilter(self)
         input_fields_layout.addWidget(self.target_language_input)
-        
-        input_layout.addLayout(input_fields_layout) 
 
+        input_layout.addLayout(input_fields_layout)
 
         layout.addLayout(input_layout)
 
@@ -124,9 +108,16 @@ class TextTranslationPage(QWidget):
         refresh_button.clicked.connect(self.refresh_fields)
         button_layout.addWidget(refresh_button)
 
+        # Download button for PDF
+        self.download_button = QPushButton("Download PDF", self)
+        self.download_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
+        self.download_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.download_button.setFixedSize(150, 50)
+        self.download_button.clicked.connect(self.download_pdf)
+        button_layout.addWidget(self.download_button)
+
     def go_to_main_window(self):
         self.back_to_main.emit()
-    
 
     def eventFilter(self, obj, event):
         if event.type() == QEvent.FocusIn:
@@ -159,6 +150,26 @@ class TextTranslationPage(QWidget):
         self.target_language_input.clear()
         self.result_text_edit.clear()
 
+    def download_pdf(self):
+        translated_text = self.result_text_edit.toPlainText()
+        if translated_text:
+            file_path, _ = QFileDialog.getSaveFileName(self, "Save PDF", "", "PDF Files (*.pdf)")
+            if file_path:
+                file_name = self.generate_pdf(translated_text, file_path)
+                QMessageBox.information(self, "Download", f"PDF generated and saved as {file_name}.")
+        else:
+            QMessageBox.warning(self, "No Translated Text", "Please perform translation before downloading PDF.")
+
+    def generate_pdf(self, translated_text, file_path):
+        c = canvas.Canvas(file_path, pagesize=letter)
+        text = translated_text.split('\n')
+        y = 750
+        for line in text:
+            c.drawString(50, y, line)
+            y -= 15
+        c.save()
+        return file_path
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -170,8 +181,8 @@ class MainWindow(QMainWindow):
 
         self.setup_main_window()
         self.setup_text_translation_page()
-    
-        self.showMaximized() 
+
+        self.showMaximized()
 
     def setup_main_window(self):
         main_window_widget = QWidget()
@@ -193,7 +204,7 @@ class MainWindow(QMainWindow):
         button_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         button_1.clicked.connect(self.show_text_translation_page)
         grid_layout.addWidget(button_1, 0, 0, alignment=Qt.AlignmentFlag.AlignCenter)
-        
+
         self.central_widget.addWidget(main_window_widget)
 
     def setup_text_translation_page(self):
@@ -219,8 +230,7 @@ class MainWindow(QMainWindow):
         if isinstance(current_widget, TextTranslationPage):
             current_widget.result_text_edit.setText(f"Translation Error: {error_message}")
 
-    
-         
+
 if __name__ == "__main__":
     app = QApplication([])
     window = MainWindow()
