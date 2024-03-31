@@ -69,7 +69,6 @@ class TextTranslationPage(QWidget):
         input_fields_layout.addWidget(self.target_language_input)
 
         input_layout.addLayout(input_fields_layout)
-
         layout.addLayout(input_layout)
 
         button_layout = QHBoxLayout()
