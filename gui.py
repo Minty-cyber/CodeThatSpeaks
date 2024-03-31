@@ -4,8 +4,7 @@ from PySide6.QtGui import QIcon, QCursor, QTextOption
 from functools import partial
 from basiclingua import BasicLingua
 import threading
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+from docx import Document
 
 class TextTranslationPage(QWidget):
     back_to_main = Signal()
