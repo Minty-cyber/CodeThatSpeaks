@@ -145,23 +145,13 @@ class TextTranslationPage(QWidget):
             obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
         return super().eventFilter(obj, event)
 
-    def translate_and_download_pdf(self):
+    def translate_text(self):
         api_key = self.api_input.text()
         user_input = self.user_input.toPlainText()
         target_lang = self.target_language_input.text()
 
         translation_thread = threading.Thread(target=self.perform_translation, args=(api_key, user_input, target_lang))
         translation_thread.start()
-
-        translation_thread.join()  # Wait for translation to complete before generating PDF
-
-        translated_text = self.result_text_edit.toPlainText()
-        if translated_text:
-            file_name = self.download_pdf(translated_text)
-            QMessageBox.information(self, "Download", f"PDF generated and downloaded as {file_name}.")
-        else:
-            QMessageBox.warning(self, "No Translated Text", "Please perform translation before downloading PDF.")
-
 
     def perform_translation(self, api_key, user_input, target_lang):
         try:
