@@ -50,6 +50,8 @@ class TextTranslationPage(QWidget):
         self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
         self.user_input.setFixedSize(300, 100) 
         self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.user_input.installEventFilter(self)
+        
         input_fields_layout.addWidget(self.user_input)
         
         self.target_language_input = QLineEdit(self)
