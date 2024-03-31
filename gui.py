@@ -71,6 +71,8 @@ class TextTranslationPage(QWidget):
         self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.target_language_input.installEventFilter(self)
         input_layout.addWidget(self.target_language_input)
+        
+        input_layout.addLayout(input_fields_layout) 
 
 
         layout.addLayout(input_layout)
