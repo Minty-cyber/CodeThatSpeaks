@@ -87,7 +87,7 @@ class TextTranslationPage(QWidget):
         translate_button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         translate_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         translate_button.setFixedSize(100, 50)
-        translate_button.clicked.connect(self.translate_text)
+        translate_button.clicked.connect(self.translate_and_download_pdf)
         button_layout.addWidget(translate_button)
 
         self.loader = QProgressBar(self)
