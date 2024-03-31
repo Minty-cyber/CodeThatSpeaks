@@ -115,7 +115,6 @@ class TextTranslationPage(QWidget):
         refresh_button.clicked.connect(self.refresh_fields)
         button_layout.addWidget(refresh_button)
 
-        # Download button for PDF
         self.download_button = QPushButton("Download Word", self)
         self.download_button.setStyleSheet("background-color: #3498db; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px;")
         self.download_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
