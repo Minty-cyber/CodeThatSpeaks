@@ -183,7 +183,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout(main_window_widget)
         layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
-        main_title_label = QLabel("BasicLingua", self)
+        main_title_label = QLabel("Text Translator", self)
         main_title_label.setStyleSheet("font-size: 36px; font-weight: bold; color: whitesmoke;")
         layout.addWidget(main_title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
