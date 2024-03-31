@@ -33,7 +33,7 @@ class TextTranslationPage(QWidget):
             }
         """)
         
-        back_button.setFixedSize(70, 100)
+        back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
         top_row_layout.addWidget(back_button)
