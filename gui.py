@@ -39,7 +39,7 @@ class TextTranslationPage(QWidget):
 
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter API Key")
-        self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.api_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: black; font-size: 15px; text-align: center;")
         self.api_input.setFixedSize(300, 40)
         self.api_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.api_input.installEventFilter(self)
@@ -47,7 +47,7 @@ class TextTranslationPage(QWidget):
 
         self.user_input = QTextEdit(self) 
         self.user_input.setPlaceholderText("User Input")
-        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.user_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: black; font-size: 15px; text-align: center;")
         self.user_input.setFixedSize(300, 100) 
         self.user_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.user_input.installEventFilter(self)
@@ -56,7 +56,7 @@ class TextTranslationPage(QWidget):
         
         self.target_language_input = QLineEdit(self)
         self.target_language_input.setPlaceholderText("Target Language")
-        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px; text-align: center;")
+        self.target_language_input.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: black; font-size: 15px; text-align: center;")
         self.target_language_input.setFixedSize(300, 40)
         self.target_language_input.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.target_language_input.installEventFilter(self)
@@ -147,7 +147,7 @@ class TextTranslationPage(QWidget):
             self.loader.hide()
 
     def refresh_fields(self):
-        api_input
+        api_input.clear()
         self.user_input.clear()
         self.target_language_input.clear()
         self.result_text_edit.clear()
