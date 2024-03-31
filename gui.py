@@ -21,7 +21,7 @@ class TextTranslationPage(QWidget):
 
         back_button = QPushButton(self)
         back_button.setIcon(QIcon("back-button.png"))
-        back_button.setStyleSheet("background-color: none; border: none; color: whitesmoke;")
+        back_button.setStyleSheet("background-color: none; border: none; color: black;")
         back_button.setFixedSize(70, 70)
         back_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         back_button.clicked.connect(self.go_to_main_window)
@@ -143,7 +143,7 @@ class TextTranslationPage(QWidget):
             self.loader.hide()
 
     def refresh_fields(self):
-        api_input.clear()
+        self.api_input.clear()
         self.user_input.clear()
         self.target_language_input.clear()
         self.result_text_edit.clear()
