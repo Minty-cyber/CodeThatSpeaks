@@ -122,9 +122,9 @@ class TextTranslationPage(QWidget):
 
     def eventFilter(self, obj, event):
         if event.type() == QEvent.FocusIn:
-            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+            obj.setStyleSheet("border: 2px solid #160202; border-radius: 5px; color: black; font-size: 15px;")
         elif event.type() == QEvent.FocusOut:
-            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: whitesmoke; font-size: 15px;")
+            obj.setStyleSheet("border: 1px solid gray; border-radius: 5px; color: black; font-size: 15px;")
         return super().eventFilter(obj, event)
 
     def translate_text(self):
